@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cd6axv1rfig4r"
+path="res://.godot/imported/glock_19_ (mp3cut.net).wav-bfa8faf3b542aeec27a48ad1a648820a.sample"
+
+[deps]
+
+source_file="res://addons/Assests/gunsfx/glock_19_ (mp3cut.net).wav"
+dest_files=["res://.godot/imported/glock_19_ (mp3cut.net).wav-bfa8faf3b542aeec27a48ad1a648820a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
