@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://chqs5o7isi467"]
+
+[resource]
+resource_name = "Material.004"
+cull_mode = 2
+diffuse_mode = 3
+albedo_color = Color(0.1584723, 0.15847233, 0.1584723, 1)
+metallic = 0.54
+roughness = 0.5
+use_z_clip_scale = true
+z_clip_scale = 0.5
+use_fov_override = true
+fov_override = 40.0

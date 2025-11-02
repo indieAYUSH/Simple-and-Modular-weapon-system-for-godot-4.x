@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://dyj1qpfv6i6x1"]
+
+[ext_resource type="Script" uid="uid://dgyboepp3nmpg" path="res://weapons/Vfx/scripts/muzzle_flash.gd" id="1_n12x3"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n12x3"]
+angle_min = 94.40001
+angle_max = 306.90002
+velocity_pivot = Vector3(0, 1, 0)
+spread = 30.0
+initial_velocity_min = 3.0
+initial_velocity_max = 3.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="Gradient" id="Gradient_pkjyc"]
+colors = PackedColorArray(0.83137256, 0.46666667, 0, 1, 0, 0, 0, 0.5529412)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wds7s"]
+gradient = SubResource("Gradient_pkjyc")
+fill = 2
+fill_from = Vector2(0.50292397, 0.50292397)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ajf4"]
+transparency = 1
+blend_mode = 1
+diffuse_mode = 3
+albedo_color = Color(0.76862746, 0.5176471, 0, 1)
+albedo_texture = SubResource("GradientTexture2D_wds7s")
+emission_enabled = true
+emission_energy_multiplier = 16.0
+emission_texture = SubResource("GradientTexture2D_wds7s")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_5qls3"]
+material = SubResource("StandardMaterial3D_6ajf4")
+size = Vector2(0.6, 0.6)
+
+[node name="MuzzleFlash" type="Node3D"]
+script = ExtResource("1_n12x3")
+
+[node name="light" type="OmniLight3D" parent="."]
+visible = false
+light_color = Color(1, 0.8666667, 0.38431373, 1)
+light_energy = 1.5
+
+[node name="flash" type="GPUParticles3D" parent="."]
+cast_shadow = 0
+emitting = false
+amount = 7
+lifetime = 0.06
+one_shot = true
+speed_scale = 1.2
+explosiveness = 0.87
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_n12x3")
+draw_pass_1 = SubResource("QuadMesh_5qls3")

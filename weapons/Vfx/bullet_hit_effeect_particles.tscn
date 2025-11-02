@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://cub0ce102843a"]
+
+[ext_resource type="Script" uid="uid://ceqc7x1l2lswi" path="res://weapons/Vfx/scripts/bullet_hit_effeect_particles.gd" id="1_h2ekw"]
+
+[sub_resource type="Gradient" id="Gradient_d87dy"]
+colors = PackedColorArray(0.8509804, 0.6901961, 0, 1, 0.85490197, 0.9411765, 0.0627451, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_h2ekw"]
+gradient = SubResource("Gradient_d87dy")
+
+[sub_resource type="Curve" id="Curve_vdv7x"]
+_limits = [0.0, 4.0, 0.0, 1.0]
+_data = [Vector2(0.015503883, 0.17977548), 0.0, 0.0, 0, 0, Vector2(0.37984496, 3.9550564), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_b46wt"]
+curve = SubResource("Curve_vdv7x")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pvac1"]
+particle_flag_align_y = true
+direction = Vector3(0, 0, 0)
+spread = 35.0
+initial_velocity_min = 2.0
+initial_velocity_max = 3.0
+gravity = Vector3(0, -3, 0)
+color = Color(0.8352941, 0.6313726, 0, 1)
+color_ramp = SubResource("GradientTexture1D_h2ekw")
+emission_curve = SubResource("CurveTexture_b46wt")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cjfyu"]
+diffuse_mode = 3
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 1, 0.03137255, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_fjdl0"]
+material = SubResource("StandardMaterial3D_cjfyu")
+radius = 0.06
+height = 0.13
+radial_segments = 4
+rings = 1
+
+[node name="BulletHitEffeectParticles" type="GPUParticles3D"]
+cast_shadow = 0
+emitting = false
+amount = 13
+lifetime = 0.7
+one_shot = true
+explosiveness = 0.76
+process_material = SubResource("ParticleProcessMaterial_pvac1")
+draw_pass_1 = SubResource("SphereMesh_fjdl0")
+script = ExtResource("1_h2ekw")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

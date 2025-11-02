@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PlayerChracterStats" load_steps=2 format=3 uid="uid://d1ryhqci2u0no"]
+
+[ext_resource type="Script" uid="uid://bnb0c7i6b47pp" path="res://player/scripts/PLayerChracterStats.gd" id="1_sme4r"]
+
+[resource]
+script = ExtResource("1_sme4r")
+ChracterName = "Max"
+max_health = 100.0
+max_armor = 100.0
+armor_absorption = 20.0
+PlayerSpeed = 10.0
+metadata/_custom_type_script = "uid://bnb0c7i6b47pp"

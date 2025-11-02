@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3nlbi5n1hde"]
+
+[ext_resource type="Script" uid="uid://f3ep3x33g37t" path="res://weapons/Scripts/Bullet.gd" id="1_o8j7g"]
+[ext_resource type="PackedScene" uid="uid://etrjobew7xwe" path="res://weapons/projectiles/grenade_projectile.tscn" id="2_o4xt0"]
+
+[node name="GrenadeLauncherProjctile" type="Node3D"]
+script = ExtResource("1_o8j7g")
+type = 1
+expiry_time = 4.0
+rigid_projectile_scene = ExtResource("2_o4xt0")
+projectile_velocity = 35.0
+upward_velocity = 5.0
+metadata/_custom_type_script = "uid://f3ep3x33g37t"

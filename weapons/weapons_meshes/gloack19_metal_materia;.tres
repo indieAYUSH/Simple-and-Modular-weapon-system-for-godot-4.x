@@ -1,0 +1,19 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://domvfglebboqm"]
+
+[resource]
+resource_name = "gun_slider"
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.16924527, 0.1692453, 0.16924527, 1)
+metallic = 0.48
+roughness = 0.17
+use_z_clip_scale = true
+z_clip_scale = 0.2
+use_fov_override = true
+fov_override = 40.0
+metadata/extras = {
+"fromFBX": {
+"isTruePBR": false,
+"shadingModel": "Phong"
+}
+}

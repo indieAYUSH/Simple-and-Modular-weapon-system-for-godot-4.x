@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://daqdg8dgnna8r"
+path="res://.godot/imported/Trim_Grenade Launcher Fire Sound Effect - Noisy Clips_1 (mp3cut.net).wav-5ec0e9e49dd23483a7878a6329c5590b.sample"
+
+[deps]
+
+source_file="res://Assests/gunsfx/Trim_Grenade Launcher Fire Sound Effect - Noisy Clips_1 (mp3cut.net).wav"
+dest_files=["res://.godot/imported/Trim_Grenade Launcher Fire Sound Effect - Noisy Clips_1 (mp3cut.net).wav-5ec0e9e49dd23483a7878a6329c5590b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

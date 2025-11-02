@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="WeaponResource" load_steps=5 format=3 uid="uid://pvx5bhr7xp4n"]
+
+[ext_resource type="PackedScene" uid="uid://b8x5awgxankbl" path="res://weapons/projectiles/rigidbodyprojectile1.tscn" id="1_8kjfw"]
+[ext_resource type="PackedScene" uid="uid://dyj1qpfv6i6x1" path="res://weapons/Vfx/muzzle_flash.tscn" id="1_cvq6f"]
+[ext_resource type="Script" uid="uid://bttf06c46xd3g" path="res://weapons/Scripts/weapon_resource.gd" id="1_xpx6x"]
+[ext_resource type="PackedScene" uid="uid://us7aval3fc7n" path="res://weapons/weapon_scenes/glock_19.tscn" id="3_8kjfw"]
+
+[resource]
+script = ExtResource("1_xpx6x")
+weapon_name = "Glock19"
+weapon_scene = ExtResource("3_8kjfw")
+BulletScene = ExtResource("1_8kjfw")
+muzzle_flash = ExtResource("1_cvq6f")
+current_ammo = 12
+mag_capacity = 12
+damage = 35.0
+weapon_range = 2000.0
+shooting_animation = "SHOOT"
+reload_animation = "RELOAD"
+bob_multiplier = 0.7
+sway_multiplier = 1.0
+shoot_trauma = 0.6
+position = Vector3(0.565, -0.54, -2.145)
+rotaion = Vector3(3, 0, 0)
+metadata/_custom_type_script = "uid://bttf06c46xd3g"
