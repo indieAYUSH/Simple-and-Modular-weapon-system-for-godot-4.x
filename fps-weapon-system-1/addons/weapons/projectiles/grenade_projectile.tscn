@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://etrjobew7xwe"]
 
-[ext_resource type="Script" uid="uid://dp3jguogcn6hw" path="res://weapons/projectiles/grenade_projectile.gd" id="1_qdt4x"]
-[ext_resource type="PackedScene" uid="uid://bkqmf2nc60fd3" path="res://weapons/Vfx/explosion_particle.tscn" id="2_5yj83"]
+[ext_resource type="Script" uid="uid://dp3jguogcn6hw" path="res://addons/weapons/Scripts/grenade_projectile.gd" id="1_qdt4x"]
+[ext_resource type="PackedScene" uid="uid://bkqmf2nc60fd3" path="res://addons/weapons/Vfx/explosion_particle.tscn" id="2_5yj83"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qdt4x"]
 friction = 0.75

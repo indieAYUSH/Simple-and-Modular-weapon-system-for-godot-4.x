@@ -272,12 +272,10 @@ height = 1.7
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qvlqn"]
 height = 1.1
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("player_statemachine", "CameraJuice_Component", "HealthComp", "update_bar")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("player_statemachine", "CameraJuice_Component")]
 script = ExtResource("1_qvlqn")
 player_statemachine = NodePath("PlayerStateMachine")
 CameraJuice_Component = NodePath("head/CameraControllerComponent/CameraJuice")
-HealthComp = NodePath("")
-update_bar = NodePath("")
 current_character = ExtResource("2_xsu4s")
 
 [node name="head" type="Node3D" parent="."]
@@ -489,6 +487,7 @@ grow_vertical = 2
 texture = ExtResource("22_sto40")
 
 [node name="ContextComponent" type="CenterContainer" parent="UI"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.013020833

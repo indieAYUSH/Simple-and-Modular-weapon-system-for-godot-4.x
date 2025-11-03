@@ -12,7 +12,7 @@ var debug_draw_enabled := true
 
 @export_category("Vars")
 @export var weapons_stack : Array[WeaponResource]
-@export var selected_weapoon : String = "MiniGun"
+@export var selected_weapoon : String = "AKM"
 
 var current_weapon  : WeaponResource = null
 enum {NULL , HITSCAN , PROJECTILE}
