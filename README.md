@@ -66,6 +66,26 @@ A step-by-step setup guide will be added later explaining how to integrate the w
 
 ---
 
+## 🎮 Input Setup
+Before running the project, make sure to add these inputs in **Project Settings → Input Map**:
+
+| Action | Key |
+|--------|-----|
+| `forward` | W |
+| `backward` | S |
+| `left` | A |
+| `right` | D |
+| `jump` | Space |
+| `crouch` | Ctrl |
+| `dash` | X |
+| `shoot` | Left Mouse Button |
+| `reload` | R |
+| `sprint` | Shift (recommended) |
+
+*(Add them using the “Add New Action” field, then assign the listed keys.)*
+
+---
+
 ## 💬 About the Project
 Currently wrestling with JEE, so updates might roll out a bit slow — but the guns shoot, reload, and feel good. More chaos coming soon. 🔫😎  
 
