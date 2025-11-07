@@ -672,6 +672,7 @@ metadata/_custom_type_script = "uid://c333aph4jx7b3"
 
 [node name="JumpState" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("9_hu6bb")
+jump_force = 4.4
 metadata/_custom_type_script = "uid://ddvfv5vhdy10b"
 
 [node name="Debug_ui" type="CanvasLayer" parent="." node_paths=PackedStringArray("PLayer")]
