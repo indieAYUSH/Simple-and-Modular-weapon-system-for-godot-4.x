@@ -17,6 +17,7 @@ material = SubResource("StandardMaterial3D_h8iwl")
 [sub_resource type="BoxShape3D" id="BoxShape3D_oka2c"]
 
 [node name="rigidboxprops" type="RigidBody3D"]
+mass = 3.0
 physics_material_override = SubResource("PhysicsMaterial_mblw3")
 script = ExtResource("1_oka2c")
 

@@ -11,18 +11,15 @@
 [ext_resource type="Script" uid="uid://b808s2vhuelg3" path="res://addons/weapons/Scripts/weapon_juice_component.gd" id="9_dc3hj"]
 [ext_resource type="Script" uid="uid://bpwu3mgofmf6r" path="res://addons/weapons/Scripts/shooting_vfx_manager.gd" id="10_7t6pj"]
 
-[node name="WeaponManager" type="Node3D" node_paths=PackedStringArray("weapon_juice_component", "shooting_vfx_manager", "PlayerContr")]
+[node name="WeaponManager" type="Node3D" node_paths=PackedStringArray("weapon_juice_component", "shooting_vfx_manager")]
 script = ExtResource("1_7gan4")
 weapon_juice_component = NodePath("WeaponJuice")
 shooting_vfx_manager = NodePath("ShootingVFXManager")
-PlayerContr = NodePath("")
 weapons_stack = Array[ExtResource("2_hskht")]([ExtResource("3_ornmv"), ExtResource("4_4xfbu"), ExtResource("5_m7wf1"), ExtResource("6_6qnpu"), ExtResource("7_ue605"), ExtResource("8_5w2q8")])
 
-[node name="WeaponJuice" type="Node3D" parent="." node_paths=PackedStringArray("player_controller", "weapon_holder")]
+[node name="WeaponJuice" type="Node3D" parent="." node_paths=PackedStringArray("weapon_holder")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.175, -0.425, -1.8)
 script = ExtResource("9_dc3hj")
-player_controller = NodePath("")
 weapon_holder = NodePath("weapon_holder")
 weapon_tilt = true
 weapon_bob = true
@@ -37,3 +34,5 @@ lerp_speed = 10.0
 [node name="ShootingVFXManager" type="Node3D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("10_7t6pj")
+
+[node name="Camera3D" type="Camera3D" parent="."]

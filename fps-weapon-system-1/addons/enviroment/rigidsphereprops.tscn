@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://ch46tegwvyvcc"]
+[gd_scene load_steps=7 format=3 uid="uid://ch46tegwvyvcc"]
 
 [ext_resource type="Script" uid="uid://6lgd4jqpndim" path="res://addons/enviroment/rigidprops.gd" id="1_kd677"]
 [ext_resource type="Texture2D" uid="uid://i741v1w4vnlx" path="res://addons/Demo/gridbox-prototype-materials-main/gridbox-prototype-materials-main/prototype_512x512_red.png" id="2_y30yc"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_y30yc"]
+bounce = 0.32
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s307d"]
 albedo_texture = ExtResource("2_y30yc")
@@ -14,6 +17,8 @@ material = SubResource("StandardMaterial3D_s307d")
 [sub_resource type="SphereShape3D" id="SphereShape3D_s307d"]
 
 [node name="rigidsphereprops" type="RigidBody3D"]
+mass = 3.0
+physics_material_override = SubResource("PhysicsMaterial_y30yc")
 script = ExtResource("1_kd677")
 metadata/_custom_type_script = "uid://6lgd4jqpndim"
 

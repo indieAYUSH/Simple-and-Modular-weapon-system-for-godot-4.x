@@ -17,6 +17,7 @@ func enter()->void:
 func physics_update(delta : float)-> void:
 	Player.update_gravity(delta)
 	Player.update_movement(speed , acceleration , deacceleration)
+	Player.can_lean = false
 	
 
 func _update(delta : float) -> void:
@@ -37,5 +38,6 @@ func _update(delta : float) -> void:
 
 func exit()-> void:
 	Player.CameraJuice_Component.fov_manager(-fov_change)
+	Player.can_lean = true
 	
 	

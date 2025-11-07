@@ -73,25 +73,27 @@ func hitscan_collision(collison_point):
 	
 	if Bullet_collision:
 		var collider = Bullet_collision["collider"]
+		var normal = Bullet_collision.normal
 		var actual_hit_point = Bullet_collision.position
 		shooting_vfx_manager.spawn_bullet_trails(barrel_cast_direction, barrel_position, actual_hit_point, barrel_position.distance_to(actual_hit_point))
 		shooting_vfx_manager._spawn_hit_particles(hit_particles, actual_hit_point)
-		hitscan_damage(collider)
+		hitscan_damage(collider , normal)
 	else:
 		var max_range_point = barrel_position + barrel_cast_direction * 400.0
 		shooting_vfx_manager.spawn_bullet_trails(barrel_cast_direction, barrel_position, max_range_point, 400.0)
 
-func hitscan_damage(collider):
+func hitscan_damage(collider, normal):
 	if collider.has_user_signal("damage"):
 		collider.emit_signal("damage" , damage)
 	if collider.has_method("_apply_impact_force"):
-		collider._apply_impact_force(impact_force , collider.position)
+		collider._apply_impact_force(normal*impact_force , collider.position)
 
 func shoot_projectile(collision_point):
 	var barrel_pos : Vector3 = global_transform.origin
 	var dir = (collision_point-barrel_pos).normalized()
 	var projectile  = rigid_projectile_scene.instantiate()
 	projectile.damage_amount = damage
+	projectile.impact_force = impact_force
 	
 	get_tree().current_scene.add_child(projectile)
 	projectile.linear_velocity = projectile_velocity*dir

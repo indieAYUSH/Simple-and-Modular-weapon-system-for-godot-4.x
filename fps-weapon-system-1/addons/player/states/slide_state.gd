@@ -19,6 +19,7 @@ func enter()->void:
 	Player.crouch()
 	Player.CameraJuice_Component.fov_manager(added_camera_fov)
 	Player.CameraJuice_Component.rot_pivot_manager(5.0)
+	Player.can_lean = false
 
 
 
@@ -41,3 +42,4 @@ func exit()-> void:
 	Player.uncrouch()
 	Player.CameraJuice_Component.fov_manager(-added_camera_fov)
 	Player.CameraJuice_Component.rot_pivot_manager(0.0)
+	Player.can_lean = true

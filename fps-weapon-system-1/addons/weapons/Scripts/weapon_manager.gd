@@ -14,7 +14,7 @@ var debug_draw_enabled := true
 
 @export_category("Vars")
 @export var weapons_stack : Array[WeaponResource]
-@export var selected_weapoon : String = "AKM"
+@export var selected_weapoon : String = "GrenadeLauncher"
 
 var current_weapon  : WeaponResource = null
 enum {NULL , HITSCAN , PROJECTILE}
@@ -64,8 +64,7 @@ func shoot():
 			PlayerContr.emit_signal("UpdateWeaponHud" , current_weapon.current_ammo)
 			load_bullet()
 			PlayerContr.CameraJuice_Component._add_shake(current_weapon.shoot_trauma)
-			if !WeaponShootingAudioPLayer.playing:
-				WeaponShootingAudioPLayer.playing = true
+
 		else:
 			reload()
 

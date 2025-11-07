@@ -6,6 +6,6 @@
 [node name="RiffileBullets" type="Node3D"]
 script = ExtResource("1_rx3xd")
 expiry_time = 0.3
-impact_force = 10.0
+impact_force = 0.9
 hit_particles = ExtResource("3_ynkx1")
 metadata/_custom_type_script = "uid://f3ep3x33g37t"

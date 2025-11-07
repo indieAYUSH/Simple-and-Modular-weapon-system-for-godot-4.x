@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://5ym40qt2aau8"]
+[gd_scene load_steps=52 format=3 uid="uid://5ym40qt2aau8"]
 
 [ext_resource type="Script" uid="uid://bcqieithuf66l" path="res://addons/player/scripts/player.gd" id="1_qvlqn"]
 [ext_resource type="Script" uid="uid://boivvjeleq8ja" path="res://addons/player/scripts/Components/camera_controller_component.gd" id="2_8p4p3"]
@@ -12,9 +12,11 @@
 [ext_resource type="Script" uid="uid://lvw0vibdw22k" path="res://addons/player/states/walk_state.gd" id="6_tblmv"]
 [ext_resource type="Script" uid="uid://ddvfv5vhdy10b" path="res://addons/player/states/jump_state.gd" id="9_hu6bb"]
 [ext_resource type="Script" uid="uid://crxjj3fe1x0vl" path="res://addons/player/states/slide_state.gd" id="10_nfsas"]
+[ext_resource type="Script" uid="uid://dbavcwgvqyiyg" path="res://addons/player/states/sprint_state.gd" id="12_d1ki0"]
 [ext_resource type="Script" uid="uid://c333aph4jx7b3" path="res://addons/player/states/falling_state.gd" id="13_xsu4s"]
 [ext_resource type="Script" uid="uid://clyumisqx0i7s" path="res://addons/player/states/dash_state.gd" id="14_w2vqi"]
 [ext_resource type="Texture2D" uid="uid://dcb0sh25uoy4i" path="res://addons/Assests/keyboard_e.svg" id="16_v58eg"]
+[ext_resource type="Script" uid="uid://c0axoo45iv26" path="res://addons/Demo/debug_ui.gd" id="17_1vt7l"]
 [ext_resource type="FontFile" uid="uid://3op67rxtj0f6" path="res://addons/Assests/Fonts/roboto/Roboto-Black.ttf" id="17_xkm3v"]
 [ext_resource type="Texture2D" uid="uid://ceyssin1qct24" path="res://addons/Assests/crosshair008.png" id="22_sto40"]
 [ext_resource type="Script" uid="uid://nr0k8pums4yn" path="res://addons/player/states/crouch_state.gd" id="24_d7dwe"]
@@ -534,23 +536,24 @@ animation = &"learn_right_collision"
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_3xh5d"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_gobxe"]
-nodes/output/position = Vector2(480, 340)
+graph_offset = Vector2(-613.3519, 175.90683)
+nodes/output/position = Vector2(700, 340)
 nodes/lean_blend/node = SubResource("AnimationNodeBlend3_d7dwe")
-nodes/lean_blend/position = Vector2(220, 520)
+nodes/lean_blend/position = Vector2(160, 720)
 nodes/lean_left_collison/node = SubResource("AnimationNodeBlend2_j2dof")
-nodes/lean_left_collison/position = Vector2(-100, 420)
+nodes/lean_left_collison/position = Vector2(-160, 620)
 nodes/lean_right/node = SubResource("AnimationNodeAnimation_nylnn")
-nodes/lean_right/position = Vector2(-460, 980)
+nodes/lean_right/position = Vector2(-520, 1180)
 nodes/lean_left/node = SubResource("AnimationNodeAnimation_rhr6c")
-nodes/lean_left/position = Vector2(-460, 380)
+nodes/lean_left/position = Vector2(-520, 580)
 nodes/lean_left_colision/node = SubResource("AnimationNodeAnimation_e0dtg")
-nodes/lean_left_colision/position = Vector2(-480, 560)
+nodes/lean_left_colision/position = Vector2(-540, 760)
 nodes/lean_rest/node = SubResource("AnimationNodeAnimation_3x4x4")
-nodes/lean_rest/position = Vector2(-340, 760)
+nodes/lean_rest/position = Vector2(-400, 960)
 "nodes/lean_right_collsion 2/node" = SubResource("AnimationNodeAnimation_lm6dr")
-"nodes/lean_right_collsion 2/position" = Vector2(-240, 1020)
+"nodes/lean_right_collsion 2/position" = Vector2(-300, 1220)
 nodes/lesn_r_col/node = SubResource("AnimationNodeBlend2_3xh5d")
-nodes/lesn_r_col/position = Vector2(-20, 780)
+nodes/lesn_r_col/position = Vector2(-80, 980)
 node_connections = [&"output", 0, &"lean_blend", &"lean_blend", 0, &"lean_left_collison", &"lean_blend", 1, &"lean_rest", &"lean_blend", 2, &"lesn_r_col", &"lean_left_collison", 0, &"lean_left", &"lean_left_collison", 1, &"lean_left_colision", &"lesn_r_col", 0, &"lean_right", &"lesn_r_col", 1, &"lean_right_collsion 2"]
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("player_statemachine", "CameraJuice_Component", "left_lean_collision", "right_lean_collision")]
@@ -641,38 +644,39 @@ metadata/_custom_type_script = "uid://2ykdhxibejv1"
 
 [node name="IdleState" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("5_tblmv")
-metadata/_custom_type_script = "uid://bdb24wwkuvnvt"
+metadata/_custom_type_script = "uid://drihlu2omkt26"
 
 [node name="WalkState" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("6_tblmv")
-speed = 10.0
-metadata/_custom_type_script = "uid://bdb24wwkuvnvt"
-
-[node name="JumpState" type="Node" parent="PlayerStateMachine"]
-script = ExtResource("9_hu6bb")
-metadata/_custom_type_script = "uid://bdb24wwkuvnvt"
-
-[node name="SlideState" type="Node" parent="PlayerStateMachine"]
-script = ExtResource("10_nfsas")
-metadata/_custom_type_script = "uid://bdb24wwkuvnvt"
-
-[node name="FallingState" type="Node" parent="PlayerStateMachine"]
-script = ExtResource("13_xsu4s")
-metadata/_custom_type_script = "uid://bdb24wwkuvnvt"
-
-[node name="DashState" type="Node" parent="PlayerStateMachine" node_paths=PackedStringArray("camera", "DashCoolDownTimer")]
-script = ExtResource("14_w2vqi")
-dash_speed = 40.0
-camera = NodePath("../../head/CameraControllerComponent/CameraJuice/lean_pivot/screen_shake/Camera3D")
-DashCoolDown = 1.0
-DashCoolDownTimer = NodePath("../../TimersHolderComponent/DashCoolDown")
-metadata/_custom_type_script = "uid://bdb24wwkuvnvt"
+metadata/_custom_type_script = "uid://lvw0vibdw22k"
 
 [node name="CrouchState" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("24_d7dwe")
 metadata/_custom_type_script = "uid://nr0k8pums4yn"
 
-[node name="Debug_ui" type="CanvasLayer" parent="."]
+[node name="SprintState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("12_d1ki0")
+metadata/_custom_type_script = "uid://dbavcwgvqyiyg"
+
+[node name="DashState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("14_w2vqi")
+metadata/_custom_type_script = "uid://clyumisqx0i7s"
+
+[node name="SlideState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("10_nfsas")
+metadata/_custom_type_script = "uid://crxjj3fe1x0vl"
+
+[node name="FallingState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("13_xsu4s")
+metadata/_custom_type_script = "uid://c333aph4jx7b3"
+
+[node name="JumpState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("9_hu6bb")
+metadata/_custom_type_script = "uid://ddvfv5vhdy10b"
+
+[node name="Debug_ui" type="CanvasLayer" parent="." node_paths=PackedStringArray("PLayer")]
+script = ExtResource("17_1vt7l")
+PLayer = NodePath("..")
 
 [node name="Control" type="Control" parent="Debug_ui"]
 layout_mode = 3
@@ -850,4 +854,3 @@ parameters/lesn_r_col/blend_amount = 0.0
 [connection signal="UpdateWeaponHud" from="." to="UI/WeaponHud" method="_on_player_update_weapon_hud"]
 [connection signal="recieved_damage" from="." to="head/CameraControllerComponent/CameraJuice" method="damage_anim"]
 [connection signal="state_changed" from="PlayerStateMachine" to="Debug_ui" method="_on_player_state_machine_state_changed"]
-[connection signal="timeout" from="TimersHolderComponent/DashCoolDown" to="PlayerStateMachine/DashState" method="_on_dash_cool_down_timeout"]

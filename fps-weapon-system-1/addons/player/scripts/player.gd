@@ -34,7 +34,7 @@ signal  UpdateWeaponHud
 
 var input_dir
 @onready var camera_3d = %Camera3D
-
+var can_lean : bool = true
 #Signals
 signal recieved_damage
 
@@ -57,7 +57,8 @@ func _physics_process(delta):
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	lean_collision()
 	move_and_slide()
-	
+	if  !can_lean:
+		Lean(CENTER)
 
 
 
@@ -73,9 +74,9 @@ func _input(event):
 	if Input.is_action_just_released("lean_left") or  Input.is_action_just_released("lean_right"):
 		if (!Input.is_action_pressed("lean_left") or !Input.is_action_pressed("lean_right")):
 			Lean(CENTER)
-	if Input.is_action_just_pressed("lean_left"):
+	if Input.is_action_just_pressed("lean_left") and can_lean:
 		Lean(LEFT)
-	if Input.is_action_just_pressed("lean_right"):
+	if Input.is_action_just_pressed("lean_right") and can_lean:
 		Lean(RIGHT)
 
 func update_movement(_speed : float , _acceleration : float , Deacceleration :float ):
@@ -118,6 +119,7 @@ func dash(direction: Vector3, speed: float) -> void:
 	velocity = _direction * speed  
 
 func Lean(blend_amount):
+
 	if lean_tween:
 		lean_tween.kill()
 	lean_tween = get_tree().create_tween()

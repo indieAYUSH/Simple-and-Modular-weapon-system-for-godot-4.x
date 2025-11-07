@@ -8,7 +8,8 @@ class_name JumpState  extends PlayerMovementState
 
 func enter()->void:
 	Player.velocity.y += jump_force
-	PlayerAnimation.play("jump")
+	PlayerAnimationTree["parameters/jump_shot/active"] = true
+	Player.can_lean = false
 
 func _update(delta : float) -> void:
 	
@@ -27,3 +28,4 @@ func physics_update(delta : float)-> void:
 
 func exit()-> void:
 	PlayerAnimation.play("land")
+	Player.can_lean = true
