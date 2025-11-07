@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://fxd2knfxrgje"]
 
-[ext_resource type="Script" uid="uid://uce45pdqyv1p" path="res://weapons/Scripts/projectile.gd" id="1_qenrc"]
+[ext_resource type="Script" uid="uid://uce45pdqyv1p" path="res://addons/weapons/Scripts/projectile.gd" id="1_qenrc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qenrc"]
 diffuse_mode = 3

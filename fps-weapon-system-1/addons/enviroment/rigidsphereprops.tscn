@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://ch46tegwvyvcc"]
+
+[ext_resource type="Script" uid="uid://6lgd4jqpndim" path="res://addons/enviroment/rigidprops.gd" id="1_kd677"]
+[ext_resource type="Texture2D" uid="uid://i741v1w4vnlx" path="res://addons/Demo/gridbox-prototype-materials-main/gridbox-prototype-materials-main/prototype_512x512_red.png" id="2_y30yc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s307d"]
+albedo_texture = ExtResource("2_y30yc")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_y30yc"]
+material = SubResource("StandardMaterial3D_s307d")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_s307d"]
+
+[node name="rigidsphereprops" type="RigidBody3D"]
+script = ExtResource("1_kd677")
+metadata/_custom_type_script = "uid://6lgd4jqpndim"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_y30yc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_s307d")

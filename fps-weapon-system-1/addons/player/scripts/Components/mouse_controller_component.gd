@@ -7,7 +7,7 @@ class_name MouseControllerComponent extends Node
 
 @export_category("refrences")
 @export var camera_controller : CameraControllerComponent
-@export var Weapon_Juice_Component : WeaponJuiceComponent
+@export var weapon_manager : WeaponManager
 
 var capture_mouse : bool
 var mouse_input : Vector2
@@ -18,7 +18,7 @@ func _unhandled_input(event):
 		mouse_input.x += -event.relative.x * mouse_senstivity
 		mouse_input.y += -event.relative.y * mouse_senstivity
 		camera_controller._update_rotation(mouse_input)
-		Weapon_Juice_Component._sway(mouse_input)
+		weapon_manager.weapon_juice_component._sway(mouse_input)
 
 func _ready():
 	Input.mouse_mode = mouse_capture_mode

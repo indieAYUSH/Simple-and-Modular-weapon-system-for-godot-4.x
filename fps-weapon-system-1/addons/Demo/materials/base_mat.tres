@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://ca1jeuxfo8tes"]
+
+[ext_resource type="Texture2D" uid="uid://tqlriyy33d11" path="res://addons/Demo/gridbox-prototype-materials-main/gridbox-prototype-materials-main/prototype_512x512_grey1.png" id="1_qhs72"]
+
+[resource]
+albedo_texture = ExtResource("1_qhs72")
+roughness = 0.43
+uv1_triplanar = true
+uv1_world_triplanar = true

@@ -19,6 +19,7 @@ class_name WeaponResource
 @export var damage : float
 @export var weapon_range : float
 
+
 @export_category("spread_and_recoil")
 @export var spread : Vector2 = Vector2.ZERO
 
@@ -27,6 +28,8 @@ class_name WeaponResource
 @export var shooting_animation :String
 @export var reload_animation :String
 
+@export_category("sounds")
+@export var shooting_sound : AudioStream
 
 @export_category("Juice_effect_multiplier")
 @export var bob_multiplier : float

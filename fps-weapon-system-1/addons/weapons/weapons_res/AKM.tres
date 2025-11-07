@@ -21,6 +21,6 @@ bob_multiplier = 0.6
 sway_multiplier = 1.0
 shoot_trauma = 0.25
 Autofire = true
-position = Vector3(0.21, -0.385, -1.175)
+position = Vector3(0.175, -0.425, -1.35)
 rotaion = Vector3(1.5, 1, 0)
 metadata/_custom_type_script = "uid://bttf06c46xd3g"

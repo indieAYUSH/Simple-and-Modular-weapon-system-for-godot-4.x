@@ -4,9 +4,10 @@ class_name Bullet
 # Define as enum for single selection
 @export_enum("Hitscan", "RigidBodyProjectiles") var type : int = 0
 
-@export_category("WeaponStats")
+@export_category("BulletVars")
 @export var expiry_time : float
 @export var bullet_range  : float
+@export var impact_force : float
 
 #RigidBodyProjectile
 @export_category("Rigid_Body_Projectiles")
@@ -83,6 +84,8 @@ func hitscan_collision(collison_point):
 func hitscan_damage(collider):
 	if collider.has_user_signal("damage"):
 		collider.emit_signal("damage" , damage)
+	if collider.has_method("_apply_impact_force"):
+		collider._apply_impact_force(impact_force , collider.position)
 
 func shoot_projectile(collision_point):
 	var barrel_pos : Vector3 = global_transform.origin

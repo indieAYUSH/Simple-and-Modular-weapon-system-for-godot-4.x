@@ -8,7 +8,9 @@ class_name WeaponManager
 @export var weapon_juice_component : WeaponJuiceComponent
 @export var shooting_vfx_manager : ShootingVFXManager
 @export var PlayerContr : PlayerController
+@export var WeaponShootingAudioPLayer : AudioStreamPlayer
 var debug_draw_enabled := true
+@onready var weapon_holder = $WeaponJuice/weapon_holder
 
 @export_category("Vars")
 @export var weapons_stack : Array[WeaponResource]
@@ -34,10 +36,12 @@ func load_new_weapon(weapon_namae : String) -> void :
 			current_weapon = i
 	
 	var weapon_scene = current_weapon.weapon_scene.instantiate()
-	weapon_scene.position = current_weapon.position
-	weapon_scene.rotation = Vector3(deg_to_rad(current_weapon.rotaion.x),deg_to_rad(current_weapon.rotaion.y),deg_to_rad(current_weapon.rotaion.z))
-	weapon_juice_component.add_child(weapon_scene)
+	weapon_holder.position = current_weapon.position
+	weapon_holder.rotation = Vector3(deg_to_rad(current_weapon.rotaion.x),deg_to_rad(current_weapon.rotaion.y),deg_to_rad(current_weapon.rotaion.z))
+	
+	weapon_holder.add_child(weapon_scene)
 	WeaponAnimationPlayer = weapon_scene.get_node("AnimationPlayer")
+	WeaponShootingAudioPLayer = weapon_scene.get_node("SHOOTsfx")
 	barrel = weapon_scene.get_node("barrel_pos")
 	PlayerContr.emit_signal("UpdateWeaponHud" , current_weapon.current_ammo)
 	WeaponAnimationPlayer.animation_finished.connect(WeaponAnimationFinished)
@@ -59,8 +63,9 @@ func shoot():
 			current_weapon.current_ammo -= 1
 			PlayerContr.emit_signal("UpdateWeaponHud" , current_weapon.current_ammo)
 			load_bullet()
-			#PlayerContr.CameraJuice_Component._add_shake(current_weapon.shoot_trauma)
-			
+			PlayerContr.CameraJuice_Component._add_shake(current_weapon.shoot_trauma)
+			if !WeaponShootingAudioPLayer.playing:
+				WeaponShootingAudioPLayer.playing = true
 		else:
 			reload()
 

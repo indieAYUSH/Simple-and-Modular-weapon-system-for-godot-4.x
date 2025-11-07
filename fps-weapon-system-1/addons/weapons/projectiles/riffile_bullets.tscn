@@ -1,10 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://bfh60q7yoj82w"]
 
-[ext_resource type="Script" uid="uid://f3ep3x33g37t" path="res://weapons/Scripts/Bullet.gd" id="1_rx3xd"]
-[ext_resource type="PackedScene" uid="uid://cub0ce102843a" path="res://weapons/Vfx/bullet_hit_effeect_particles.tscn" id="3_ynkx1"]
+[ext_resource type="Script" uid="uid://f3ep3x33g37t" path="res://addons/weapons/Scripts/Bullet.gd" id="1_rx3xd"]
+[ext_resource type="PackedScene" uid="uid://cub0ce102843a" path="res://addons/weapons/Vfx/bullet_hit_effeect_particles.tscn" id="3_ynkx1"]
 
 [node name="RiffileBullets" type="Node3D"]
 script = ExtResource("1_rx3xd")
 expiry_time = 0.3
+impact_force = 10.0
 hit_particles = ExtResource("3_ynkx1")
 metadata/_custom_type_script = "uid://f3ep3x33g37t"

@@ -1,0 +1,27 @@
+[gd_scene load_steps=7 format=3 uid="uid://baatmcfd4qy01"]
+
+[ext_resource type="Script" uid="uid://6lgd4jqpndim" path="res://addons/enviroment/rigidprops.gd" id="1_oka2c"]
+[ext_resource type="Texture2D" uid="uid://cyo6ckmb81cbd" path="res://addons/Demo/gridbox-prototype-materials-main/gridbox-prototype-materials-main/prototype_512x512_yellow.png" id="2_mfksh"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mblw3"]
+bounce = 0.33
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h8iwl"]
+albedo_texture = ExtResource("2_mfksh")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_oka2c"]
+material = SubResource("StandardMaterial3D_h8iwl")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oka2c"]
+
+[node name="rigidboxprops" type="RigidBody3D"]
+physics_material_override = SubResource("PhysicsMaterial_mblw3")
+script = ExtResource("1_oka2c")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_oka2c")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_oka2c")

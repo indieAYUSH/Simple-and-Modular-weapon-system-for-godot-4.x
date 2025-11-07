@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://5ym40qt2aau8"]
+[gd_scene load_steps=50 format=3 uid="uid://5ym40qt2aau8"]
 
 [ext_resource type="Script" uid="uid://bcqieithuf66l" path="res://addons/player/scripts/player.gd" id="1_qvlqn"]
 [ext_resource type="Script" uid="uid://boivvjeleq8ja" path="res://addons/player/scripts/Components/camera_controller_component.gd" id="2_8p4p3"]
@@ -6,41 +6,33 @@
 [ext_resource type="Script" uid="uid://bmpd60tvtu81a" path="res://addons/player/scripts/Components/mouse_controller_component.gd" id="3_4eyqk"]
 [ext_resource type="Script" uid="uid://c8jv7ncgkeitl" path="res://addons/player/scripts/camera_juice.gd" id="3_iqofo"]
 [ext_resource type="Script" uid="uid://2ykdhxibejv1" path="res://addons/player/StateMachine/StateMachine.gd" id="4_gp3q6"]
-[ext_resource type="Script" uid="uid://glvwd42co48c" path="res://addons/weapons/Scripts/weapon_manager.gd" id="5_r6e3m"]
+[ext_resource type="PackedScene" uid="uid://cenwygddxwytv" path="res://addons/weapons/weapon_manager.tscn" id="5_d1ki0"]
 [ext_resource type="Script" uid="uid://drihlu2omkt26" path="res://addons/player/states/IdleState.gd" id="5_tblmv"]
 [ext_resource type="Script" uid="uid://c2wa73ft7dn5e" path="res://addons/player/scripts/Components/interraction_ray_cast.gd" id="5_vd5ca"]
-[ext_resource type="Script" uid="uid://bttf06c46xd3g" path="res://addons/weapons/Scripts/weapon_resource.gd" id="6_6by8t"]
 [ext_resource type="Script" uid="uid://lvw0vibdw22k" path="res://addons/player/states/walk_state.gd" id="6_tblmv"]
-[ext_resource type="Resource" uid="uid://cqcbahdy32ufv" path="res://addons/weapons/weapons_res/AKM.tres" id="7_rfcb5"]
-[ext_resource type="Resource" uid="uid://bu8rj8vpuarwd" path="res://addons/weapons/weapons_res/Glock18.tres" id="8_sto40"]
 [ext_resource type="Script" uid="uid://ddvfv5vhdy10b" path="res://addons/player/states/jump_state.gd" id="9_hu6bb"]
-[ext_resource type="Script" uid="uid://b808s2vhuelg3" path="res://addons/weapons/Scripts/weapon_juice_component.gd" id="9_rfcb5"]
-[ext_resource type="Resource" uid="uid://dqdgy8uf2iiil" path="res://addons/weapons/weapons_res/MiniGun.tres" id="9_sto40"]
-[ext_resource type="Resource" uid="uid://pvx5bhr7xp4n" path="res://addons/weapons/weapons_res/Glock_19.tres" id="10_m3iqo"]
 [ext_resource type="Script" uid="uid://crxjj3fe1x0vl" path="res://addons/player/states/slide_state.gd" id="10_nfsas"]
-[ext_resource type="Resource" uid="uid://bd6qapmmw11gb" path="res://addons/weapons/weapons_res/GrenadeLauncher.tres" id="11_g4xe3"]
-[ext_resource type="Resource" uid="uid://ch3yic65cww3j" path="res://addons/weapons/weapons_res/ShotGunLite.tres" id="12_3fo4i"]
-[ext_resource type="Script" uid="uid://bpwu3mgofmf6r" path="res://addons/weapons/Scripts/shooting_vfx_manager.gd" id="13_pcngg"]
 [ext_resource type="Script" uid="uid://c333aph4jx7b3" path="res://addons/player/states/falling_state.gd" id="13_xsu4s"]
 [ext_resource type="Script" uid="uid://clyumisqx0i7s" path="res://addons/player/states/dash_state.gd" id="14_w2vqi"]
 [ext_resource type="Texture2D" uid="uid://dcb0sh25uoy4i" path="res://addons/Assests/keyboard_e.svg" id="16_v58eg"]
 [ext_resource type="FontFile" uid="uid://3op67rxtj0f6" path="res://addons/Assests/Fonts/roboto/Roboto-Black.ttf" id="17_xkm3v"]
 [ext_resource type="Texture2D" uid="uid://ceyssin1qct24" path="res://addons/Assests/crosshair008.png" id="22_sto40"]
+[ext_resource type="Script" uid="uid://nr0k8pums4yn" path="res://addons/player/states/crouch_state.gd" id="24_d7dwe"]
 [ext_resource type="Script" uid="uid://cii81r4ip1tj4" path="res://addons/player/UI/scripts/weapon_hud.gd" id="34_fmnqm"]
 
-[sub_resource type="Gradient" id="Gradient_3fo4i"]
-offsets = PackedFloat32Array(0, 0.6122449, 0.7346939, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.50718063, 0.50718063, 0.50718063, 1, 0.829932, 0.829932, 0.829932, 1, 1, 1, 1, 1)
-
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_fmnqm"]
+frequency = 0.0353
+offset = Vector3(145.45, 0, 0)
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_s4tvy"]
 noise = SubResource("FastNoiseLite_fmnqm")
-color_ramp = SubResource("Gradient_3fo4i")
 seamless = true
-seamless_blend_skirt = 1.0
+seamless_blend_skirt = 0.89
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_hu6bb"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_d7dwe"]
+radius = 0.4
 
 [sub_resource type="Animation" id="Animation_iqofo"]
 length = 0.001
@@ -71,7 +63,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("head/CameraControllerComponent/CameraJuice/rot_pivot/Camera3D:rotation")
+tracks/2/path = NodePath("head/CameraControllerComponent/CameraJuice/lean_pivot/screen_shake/Camera3D:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -83,10 +75,58 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("head/CameraControllerComponent/CameraJuice/rot_pivot/Camera3D:position")
+tracks/3/path = NodePath("head/CameraControllerComponent/CameraJuice/lean_pivot/screen_shake/Camera3D:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("head/CameraControllerComponent/CameraJuice/lean_pivot:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("head/CameraControllerComponent/CameraJuice/lean_pivot:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("head/CameraControllerComponent/CameraJuice/lean_pivot/screen_shake/WeaponManager/WeaponJuice:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("head/CameraControllerComponent/CameraJuice/lean_pivot/screen_shake/WeaponManager/WeaponJuice/weapon_holder:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -127,7 +167,7 @@ length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("head/CameraControllerComponent/CameraJuice/rot_pivot/Camera3D:position")
+tracks/0/path = NodePath("head/CameraControllerComponent/CameraJuice/lean_pivot/screen_shake/Camera3D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -139,7 +179,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("head/CameraControllerComponent/CameraJuice/rot_pivot/Camera3D:rotation")
+tracks/1/path = NodePath("head/CameraControllerComponent/CameraJuice/lean_pivot/screen_shake/Camera3D:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -155,7 +195,7 @@ length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("head/CameraControllerComponent/CameraJuice/rot_pivot/Camera3D:rotation")
+tracks/0/path = NodePath("head/CameraControllerComponent/CameraJuice/lean_pivot/screen_shake/Camera3D:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -167,7 +207,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("head/CameraControllerComponent/CameraJuice/rot_pivot/Camera3D:position")
+tracks/1/path = NodePath("head/CameraControllerComponent/CameraJuice/lean_pivot/screen_shake/Camera3D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -183,7 +223,7 @@ length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("head/CameraControllerComponent/CameraJuice/rot_pivot/Camera3D:rotation")
+tracks/0/path = NodePath("head/CameraControllerComponent/CameraJuice/lean_pivot/screen_shake/Camera3D:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -195,7 +235,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("head/CameraControllerComponent/CameraJuice/rot_pivot/Camera3D:position")
+tracks/1/path = NodePath("head/CameraControllerComponent/CameraJuice/lean_pivot/screen_shake/Camera3D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -203,6 +243,201 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0.1, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rhr6c"]
+resource_name = "lean_left"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("head/CameraControllerComponent/CameraJuice/lean_pivot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.8, -0.32, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("head/CameraControllerComponent/CameraJuice/lean_pivot:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0.2617994)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("head/CameraControllerComponent/CameraJuice/lean_pivot/screen_shake/WeaponManager/WeaponJuice/weapon_holder:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0.17453292)]
+}
+
+[sub_resource type="Animation" id="Animation_3x4x4"]
+resource_name = "lean_left_collision"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("head/CameraControllerComponent/CameraJuice/lean_pivot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("head/CameraControllerComponent/CameraJuice/lean_pivot:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0.13962634)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("head/CameraControllerComponent/CameraJuice/lean_pivot/screen_shake/WeaponManager/WeaponJuice/weapon_holder:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0.10471976)]
+}
+
+[sub_resource type="Animation" id="Animation_d7dwe"]
+resource_name = "lean_reset"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("head/CameraControllerComponent/CameraJuice/lean_pivot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("head/CameraControllerComponent/CameraJuice/lean_pivot:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("head/CameraControllerComponent/CameraJuice/lean_pivot/screen_shake/WeaponManager/WeaponJuice:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_e0dtg"]
+resource_name = "lean_right"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("head/CameraControllerComponent/CameraJuice/lean_pivot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.8, -0.32, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("head/CameraControllerComponent/CameraJuice/lean_pivot:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -0.2617994)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("head/CameraControllerComponent/CameraJuice/lean_pivot/screen_shake/WeaponManager/WeaponJuice/weapon_holder:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -0.13962634)]
+}
+
+[sub_resource type="Animation" id="Animation_j2dof"]
+resource_name = "learn_right_collision"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("head/CameraControllerComponent/CameraJuice/lean_pivot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("head/CameraControllerComponent/CameraJuice/lean_pivot:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -0.13962634)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("head/CameraControllerComponent/CameraJuice/lean_pivot/screen_shake/WeaponManager/WeaponJuice/weapon_holder:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -0.10471976)]
 }
 
 [sub_resource type="Animation" id="Animation_hu6bb"]
@@ -256,6 +491,11 @@ _data = {
 &"damage": SubResource("Animation_k202j"),
 &"jump": SubResource("Animation_w2vqi"),
 &"land": SubResource("Animation_ojh3p"),
+&"lean_left": SubResource("Animation_rhr6c"),
+&"lean_left_collision": SubResource("Animation_3x4x4"),
+&"lean_reset": SubResource("Animation_d7dwe"),
+&"lean_right": SubResource("Animation_e0dtg"),
+&"learn_right_collision": SubResource("Animation_j2dof"),
 &"standing": SubResource("Animation_hu6bb"),
 &"uncrouch": SubResource("Animation_h4jra")
 }
@@ -272,11 +512,54 @@ height = 1.7
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qvlqn"]
 height = 1.1
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("player_statemachine", "CameraJuice_Component")]
+[sub_resource type="AnimationNodeBlend3" id="AnimationNodeBlend3_d7dwe"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rhr6c"]
+animation = &"lean_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_e0dtg"]
+animation = &"lean_left_collision"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_j2dof"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3x4x4"]
+animation = &"lean_reset"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nylnn"]
+animation = &"lean_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lm6dr"]
+animation = &"learn_right_collision"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_3xh5d"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_gobxe"]
+nodes/output/position = Vector2(480, 340)
+nodes/lean_blend/node = SubResource("AnimationNodeBlend3_d7dwe")
+nodes/lean_blend/position = Vector2(220, 520)
+nodes/lean_left_collison/node = SubResource("AnimationNodeBlend2_j2dof")
+nodes/lean_left_collison/position = Vector2(-100, 420)
+nodes/lean_right/node = SubResource("AnimationNodeAnimation_nylnn")
+nodes/lean_right/position = Vector2(-460, 980)
+nodes/lean_left/node = SubResource("AnimationNodeAnimation_rhr6c")
+nodes/lean_left/position = Vector2(-460, 380)
+nodes/lean_left_colision/node = SubResource("AnimationNodeAnimation_e0dtg")
+nodes/lean_left_colision/position = Vector2(-480, 560)
+nodes/lean_rest/node = SubResource("AnimationNodeAnimation_3x4x4")
+nodes/lean_rest/position = Vector2(-340, 760)
+"nodes/lean_right_collsion 2/node" = SubResource("AnimationNodeAnimation_lm6dr")
+"nodes/lean_right_collsion 2/position" = Vector2(-240, 1020)
+nodes/lesn_r_col/node = SubResource("AnimationNodeBlend2_3xh5d")
+nodes/lesn_r_col/position = Vector2(-20, 780)
+node_connections = [&"output", 0, &"lean_blend", &"lean_blend", 0, &"lean_left_collison", &"lean_blend", 1, &"lean_rest", &"lean_blend", 2, &"lesn_r_col", &"lean_left_collison", 0, &"lean_left", &"lean_left_collison", 1, &"lean_left_colision", &"lesn_r_col", 0, &"lean_right", &"lesn_r_col", 1, &"lean_right_collsion 2"]
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("player_statemachine", "CameraJuice_Component", "left_lean_collision", "right_lean_collision")]
 script = ExtResource("1_qvlqn")
 player_statemachine = NodePath("PlayerStateMachine")
 CameraJuice_Component = NodePath("head/CameraControllerComponent/CameraJuice")
 current_character = ExtResource("2_xsu4s")
+left_lean_collision = NodePath("head/CameraControllerComponent/obstacle_checker/lean_collision_checker_left")
+right_lean_collision = NodePath("head/CameraControllerComponent/obstacle_checker/lean_collision_checker_right")
 
 [node name="head" type="Node3D" parent="."]
 unique_name_in_owner = true
@@ -290,10 +573,11 @@ Player_controller = NodePath("../..")
 
 [node name="CameraJuice" type="Node3D" parent="head/CameraControllerComponent" node_paths=PackedStringArray("camera", "Player")]
 script = ExtResource("3_iqofo")
-camera = NodePath("rot_pivot/Camera3D")
+camera = NodePath("lean_pivot/screen_shake/Camera3D")
 Camera_tilt = true
 Head_bob = true
 camer_fov_changes = true
+camera_shake = true
 Player = NodePath("../../..")
 bob_pitch = 0.04
 bob_roll = 0.03
@@ -301,39 +585,20 @@ bob_up = 0.003
 bob_frequncy = 5.0
 noise_texture = SubResource("NoiseTexture2D_s4tvy")
 
-[node name="rot_pivot" type="Node3D" parent="head/CameraControllerComponent/CameraJuice"]
+[node name="lean_pivot" type="Node3D" parent="head/CameraControllerComponent/CameraJuice"]
 unique_name_in_owner = true
 
-[node name="screen_shake" type="Node3D" parent="head/CameraControllerComponent/CameraJuice/rot_pivot"]
+[node name="screen_shake" type="Node3D" parent="head/CameraControllerComponent/CameraJuice/lean_pivot"]
 unique_name_in_owner = true
 
-[node name="WeaponManager" type="Node3D" parent="head/CameraControllerComponent/CameraJuice/rot_pivot" node_paths=PackedStringArray("weapon_juice_component", "shooting_vfx_manager", "PlayerContr")]
+[node name="WeaponManager" parent="head/CameraControllerComponent/CameraJuice/lean_pivot/screen_shake" node_paths=PackedStringArray("PlayerContr") instance=ExtResource("5_d1ki0")]
 unique_name_in_owner = true
-script = ExtResource("5_r6e3m")
-weapon_juice_component = NodePath("WeaponJuice")
-shooting_vfx_manager = NodePath("ShootingVFXManager")
-PlayerContr = NodePath("../../../../..")
-weapons_stack = Array[ExtResource("6_6by8t")]([ExtResource("7_rfcb5"), ExtResource("8_sto40"), ExtResource("9_sto40"), ExtResource("10_m3iqo"), ExtResource("11_g4xe3"), ExtResource("12_3fo4i")])
+PlayerContr = NodePath("../../../../../..")
 
-[node name="WeaponJuice" type="Node3D" parent="head/CameraControllerComponent/CameraJuice/rot_pivot/WeaponManager" node_paths=PackedStringArray("player_controller")]
-unique_name_in_owner = true
-script = ExtResource("9_rfcb5")
-player_controller = NodePath("../../../../../..")
-weapon_bob = true
-roll_pitch = 0.055
-roll_side_rot = 0.79
-frequency = 1.6
-amplitude = 0.035
-lerp_speed = 10.0
-
-[node name="ShootingVFXManager" type="Node3D" parent="head/CameraControllerComponent/CameraJuice/rot_pivot/WeaponManager"]
-unique_name_in_owner = true
-script = ExtResource("13_pcngg")
-
-[node name="Camera3D" type="Camera3D" parent="head/CameraControllerComponent/CameraJuice/rot_pivot"]
+[node name="Camera3D" type="Camera3D" parent="head/CameraControllerComponent/CameraJuice/lean_pivot/screen_shake"]
 unique_name_in_owner = true
 
-[node name="Interraction_Ray_cast" type="RayCast3D" parent="head/CameraControllerComponent/CameraJuice/rot_pivot/Camera3D"]
+[node name="Interraction_Ray_cast" type="RayCast3D" parent="head/CameraControllerComponent/CameraJuice/lean_pivot/screen_shake/Camera3D"]
 target_position = Vector3(0, 0, -3)
 
 [node name="obstacle_checker" type="Node3D" parent="head/CameraControllerComponent"]
@@ -345,17 +610,29 @@ shape = SubResource("SphereShape3D_hu6bb")
 target_position = Vector3(0, 0, 0)
 debug_shape_custom_color = Color(0, 1, 0, 1)
 
+[node name="lean_collision_checker_left" type="ShapeCast3D" parent="head/CameraControllerComponent/obstacle_checker"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.27435434, 0)
+shape = SubResource("SphereShape3D_d7dwe")
+target_position = Vector3(-0.85, 0, 0)
+collide_with_areas = true
+
+[node name="lean_collision_checker_right" type="ShapeCast3D" parent="head/CameraControllerComponent/obstacle_checker"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.27435434, 0)
+shape = SubResource("SphereShape3D_d7dwe")
+target_position = Vector3(0.85, 0, 0)
+collide_with_areas = true
+
 [node name="Components" type="Node" parent="."]
 
-[node name="MouseControllerComponent" type="Node" parent="Components" node_paths=PackedStringArray("camera_controller", "Weapon_Juice_Component")]
+[node name="MouseControllerComponent" type="Node" parent="Components" node_paths=PackedStringArray("camera_controller", "weapon_manager")]
 script = ExtResource("3_4eyqk")
 mouse_senstivity = 0.003
 camera_controller = NodePath("../../head/CameraControllerComponent")
-Weapon_Juice_Component = NodePath("../../head/CameraControllerComponent/CameraJuice/rot_pivot/WeaponManager/WeaponJuice")
+weapon_manager = NodePath("../../head/CameraControllerComponent/CameraJuice/lean_pivot/screen_shake/WeaponManager")
 
 [node name="PlayerInterractionRay" type="Node" parent="Components" node_paths=PackedStringArray("interaction_raycast")]
 script = ExtResource("5_vd5ca")
-interaction_raycast = NodePath("../../head/CameraControllerComponent/CameraJuice/rot_pivot/Camera3D/Interraction_Ray_cast")
+interaction_raycast = NodePath("../../head/CameraControllerComponent/CameraJuice/lean_pivot/screen_shake/Camera3D/Interraction_Ray_cast")
 
 [node name="PlayerStateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state")]
 script = ExtResource("4_gp3q6")
@@ -386,10 +663,14 @@ metadata/_custom_type_script = "uid://bdb24wwkuvnvt"
 [node name="DashState" type="Node" parent="PlayerStateMachine" node_paths=PackedStringArray("camera", "DashCoolDownTimer")]
 script = ExtResource("14_w2vqi")
 dash_speed = 40.0
-camera = NodePath("../../head/CameraControllerComponent/CameraJuice/rot_pivot/Camera3D")
+camera = NodePath("../../head/CameraControllerComponent/CameraJuice/lean_pivot/screen_shake/Camera3D")
 DashCoolDown = 1.0
 DashCoolDownTimer = NodePath("../../TimersHolderComponent/DashCoolDown")
 metadata/_custom_type_script = "uid://bdb24wwkuvnvt"
+
+[node name="CrouchState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("24_d7dwe")
+metadata/_custom_type_script = "uid://nr0k8pums4yn"
 
 [node name="Debug_ui" type="CanvasLayer" parent="."]
 
@@ -547,6 +828,8 @@ label_settings = SubResource("LabelSettings_3fo4i")
 
 [node name="DashCoolDown" type="Timer" parent="TimersHolderComponent"]
 
+[node name="SunShot" type="AudioStreamPlayer" parent="TimersHolderComponent"]
+
 [node name="uncrouched_collision_shape" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_mbkfo")
 
@@ -554,6 +837,15 @@ shape = SubResource("CapsuleShape3D_mbkfo")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2991699, 0)
 shape = SubResource("CapsuleShape3D_qvlqn")
 disabled = true
+
+[node name="ShootSound" type="AudioStreamPlayer" parent="."]
+
+[node name="PlayerAnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeBlendTree_gobxe")
+anim_player = NodePath("../PlayerAnimation")
+parameters/lean_blend/blend_amount = 0.0
+parameters/lean_left_collison/blend_amount = 0.0
+parameters/lesn_r_col/blend_amount = 0.0
 
 [connection signal="UpdateWeaponHud" from="." to="UI/WeaponHud" method="_on_player_update_weapon_hud"]
 [connection signal="recieved_damage" from="." to="head/CameraControllerComponent/CameraJuice" method="damage_anim"]

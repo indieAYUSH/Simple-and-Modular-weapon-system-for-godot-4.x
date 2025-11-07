@@ -2,7 +2,6 @@ class_name CameraJuiceComponent extends Node3D
 
 @export_category("Reffrences")
 @export var camera : Camera3D
-@onready var rot_pivot = %rot_pivot
 @onready var screen_shake = %screen_shake
 
 
@@ -97,12 +96,11 @@ func camera_effects_manager(delta:float) -> void:
 	if trauma > 0 and noise_texture:
 		var noise = noise_texture.noise
 		var amount = trauma * trauma
-		print(amount)
 		
 		# Direct shake (no smoothing)
-		screen_shake.position.x = noise.get_noise_1d(time * noise_speed) * max_offset * amount *2.0
-		screen_shake.position.y = noise.get_noise_1d(time * noise_speed + 100.0) * max_offset * amount * 2.0
-		screen_shake.rotation.z = noise.get_noise_1d(time * noise_speed + 200.0) * deg_to_rad(max_rotaion) * amount *1.5
+		#screen_shake.position.x = noise.get_noise_1d(time * noise_speed) * max_offset * amount *2.0
+		#screen_shake.position.y = noise.get_noise_1d(time * noise_speed + 100.0) * max_offset * amount * 2.0
+		screen_shake.rotation.z = noise.get_noise_1d(time * noise_speed + 0.0) * deg_to_rad(max_rotaion) * amount *100.5
 		
 	else:
 		screen_shake.position = Vector3.ZERO
@@ -113,10 +111,6 @@ func camera_effects_manager(delta:float) -> void:
 	
 	camera.fov = lerp(camera.fov , target_fov , lerp_speed*delta)
 	
-	#=================Rotation pivot settings================#
-	rot_pivot.rotation.z = lerp(rot_pivot.rotation.z , deg_to_rad(rot_pivot_amount) , lerp_speed*delta)
-	rot_pivot.rotation.x = lerp(rot_pivot.rotation.x , deg_to_rad(rot_pivot_x_rot_amount) , lerp_speed*delta)
-	rot_pivot.rotation.x = clamp(rot_pivot.rotation.x , deg_to_rad(0.0) , deg_to_rad(15.0))
 
 
 func fov_manager(amount:float) -> void:

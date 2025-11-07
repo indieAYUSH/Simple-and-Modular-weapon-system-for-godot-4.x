@@ -5,6 +5,7 @@ var parent : WeaponManager
 
 @export_category("refrences")
 @export var player_controller : PlayerController
+@export var weapon_holder : Node3D
 
 @export_category("effects")
 @export var weapon_tilt : bool
@@ -25,6 +26,7 @@ var bob_intensity : float
 
 func _ready():
 	parent = get_parent()
+	player_controller = parent.PlayerContr
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -49,11 +51,11 @@ func weapon_juice(delta : float ) -> void:
 	var angles  : Vector3
 	var offset  : Vector3
 	
-	var velocity = player_controller.velocity.length()
+	var velocity = parent.PlayerContr.velocity.length()
 	
 	if velocity > 0.01 and weapon_tilt:
-		angles.x = lerp(angles.x , (roll_pitch*Input.get_axis("forward","backward"))  , delta*lerp_speed)
-		angles.z = lerp(angles.z , -(roll_side_rot*Input.get_axis("left","right"))  , delta*lerp_speed)
+		parent.rotation.x = lerp(angles.x , (roll_pitch*Input.get_axis("forward","backward"))  , delta*lerp_speed)
+		parent.rotation.z = lerp(angles.z , -(roll_side_rot*Input.get_axis("left","right"))  , delta*lerp_speed)
 
 	if velocity > 0.01 and player_controller.is_on_floor() and weapon_bob and _can_headbob():
 		var speed_factor = clamp(velocity/9.5 , 0.0 , 1.0)
@@ -67,7 +69,7 @@ func weapon_juice(delta : float ) -> void:
 		offset = lerp(offset , Vector3.ZERO , delta*8.0)
 		
 	
-	rotation = angles
+	weapon_holder.rotation = angles
 	position = offset
 
 	
