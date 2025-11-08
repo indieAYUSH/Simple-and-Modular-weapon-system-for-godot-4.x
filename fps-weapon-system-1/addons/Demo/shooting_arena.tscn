@@ -1,23 +1,60 @@
-[gd_scene load_steps=9 format=3 uid="uid://begn101ys180w"]
+[gd_scene load_steps=19 format=3 uid="uid://begn101ys180w"]
 
+[ext_resource type="Texture2D" uid="uid://0g212h4mjsl6" path="res://addons/enviroment/overcast_soil_puresky_2k.exr" id="1_6tako"]
 [ext_resource type="Material" uid="uid://ca1jeuxfo8tes" path="res://addons/Demo/materials/base_mat.tres" id="1_o5r1u"]
 [ext_resource type="PackedScene" uid="uid://5ym40qt2aau8" path="res://addons/player/scene/player.tscn" id="1_otcoh"]
 [ext_resource type="Material" uid="uid://dof34ik22gtlj" path="res://addons/Demo/materials/table.tres" id="2_l4o2c"]
 [ext_resource type="PackedScene" uid="uid://baatmcfd4qy01" path="res://addons/enviroment/rigidprops.tscn" id="3_c6lbi"]
 [ext_resource type="PackedScene" uid="uid://ch46tegwvyvcc" path="res://addons/enviroment/rigidsphereprops.tscn" id="4_6tako"]
+[ext_resource type="Texture2D" uid="uid://bgj5638hlw41g" path="res://addons/Demo/gridbox-prototype-materials-main/gridbox-prototype-materials-main/prototype_512x512_cyan.png" id="4_8mchr"]
+[ext_resource type="Texture2D" uid="uid://i741v1w4vnlx" path="res://addons/Demo/gridbox-prototype-materials-main/gridbox-prototype-materials-main/prototype_512x512_red.png" id="5_qsuvo"]
+[ext_resource type="Texture2D" uid="uid://cyo6ckmb81cbd" path="res://addons/Demo/gridbox-prototype-materials-main/gridbox-prototype-materials-main/prototype_512x512_yellow.png" id="6_2k0vt"]
+[ext_resource type="Texture2D" uid="uid://cmr4n2uaw2svo" path="res://addons/Demo/gridbox-prototype-materials-main/gridbox-prototype-materials-main/prototype_512x512_green1.png" id="7_ku3qh"]
+[ext_resource type="PackedScene" uid="uid://dthkwu5kx7q6r" path="res://addons/Demo/scenes/shooting_range_target.tscn" id="11_qsuvo"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_otcoh"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_wvgco"]
+panorama = ExtResource("1_6tako")
+energy_multiplier = 0.6
 
-[sub_resource type="Sky" id="Sky_p4p1m"]
-sky_material = SubResource("ProceduralSkyMaterial_otcoh")
+[sub_resource type="Sky" id="Sky_tce78"]
+sky_material = SubResource("PanoramaSkyMaterial_wvgco")
 
 [sub_resource type="Environment" id="Environment_o5r1u"]
 background_mode = 2
-sky = SubResource("Sky_p4p1m")
-tonemap_mode = 2
+sky = SubResource("Sky_tce78")
+ambient_light_sky_contribution = 0.7
+tonemap_mode = 3
+tonemap_exposure = 0.83
+tonemap_white = 4.78
 glow_enabled = true
+glow_normalized = true
+glow_bloom = 0.1
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.02
+volumetric_fog_albedo = Color(0.29954746, 0.29954746, 0.29954743, 1)
+volumetric_fog_detail_spread = 1.8025008
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iancd"]
+albedo_texture = ExtResource("4_8mchr")
+roughness = 0.1
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1hau4"]
+albedo_texture = ExtResource("5_qsuvo")
+roughness = 0.0
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8o6ca"]
+albedo_texture = ExtResource("6_2k0vt")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cbyct"]
+albedo_texture = ExtResource("7_ku3qh")
+roughness = 0.28
+uv1_triplanar = true
+uv1_world_triplanar = true
 
 [node name="shootingArena" type="Node3D"]
 
@@ -93,24 +130,29 @@ material = ExtResource("2_l4o2c")
 [node name="CSGBox3D10" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 size = Vector3(5, 4, 5)
+material = SubResource("StandardMaterial3D_iancd")
 
 [node name="CSGBox3D11" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4654994, 1.5682921, 0)
 size = Vector3(4.246582, 2.9365845, 5)
+material = SubResource("StandardMaterial3D_iancd")
 
 [node name="CSGBox3D12" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.059420586, 1.7931972, -13.461467)
 size = Vector3(3.8234863, 2.6660461, 4.654297)
+material = SubResource("StandardMaterial3D_1hau4")
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="CSGCombiner3D"]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.574744, 2.82675, -3.4087043)
 polygon = PackedVector2Array(-7.8048773, 0.19808817, -8.376, 0.23, 0.9068401, 1.2917511, 1.050096, 0.91465425)
 depth = 2.5
+material = SubResource("StandardMaterial3D_8o6ca")
 
 [node name="CSGPolygon3D2" type="CSGPolygon3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.527, 0.5, 2.514)
 polygon = PackedVector2Array(-7.0809712, 0.034350872, 0.19585276, 2.0029776, 0.9375763, 1.9519763, 1, 0)
 depth = 4.5
+material = SubResource("StandardMaterial3D_cbyct")
 
 [node name="Player" parent="." instance=ExtResource("1_otcoh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.725523, 4.9455924, 0)
@@ -156,3 +198,63 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.41679192, 3.62622, -12.211
 
 [node name="rigidboxprops8" parent="." instance=ExtResource("3_c6lbi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.466754, 4.6, 1.6457028)
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.898163, 0, 0)
+
+[node name="shooting_range_target" parent="Node3D" instance=ExtResource("11_qsuvo")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0.43840468, 0)
+
+[node name="shooting_range_target2" parent="Node3D" instance=ExtResource("11_qsuvo")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0.43840468, -4.883664)
+
+[node name="shooting_range_target3" parent="Node3D" instance=ExtResource("11_qsuvo")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0.43840468, -11.352868)
+
+[node name="shooting_range_target4" parent="Node3D" instance=ExtResource("11_qsuvo")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0.43840468, -16.270617)
+
+[node name="shooting_range_target5" parent="Node3D" instance=ExtResource("11_qsuvo")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0.43840468, -23.1609)
+
+[node name="shooting_range_target6" parent="Node3D" instance=ExtResource("11_qsuvo")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0.43840468, -30.297703)
+
+[node name="shooting_range_target7" parent="Node3D" instance=ExtResource("11_qsuvo")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0.43840468, -35.680767)
+
+[node name="shooting_range_target8" parent="Node3D" instance=ExtResource("11_qsuvo")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6.971039, 0.43840468, -14.301584)
+
+[node name="shooting_range_target9" parent="Node3D" instance=ExtResource("11_qsuvo")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6.971039, 0.43840468, -10.227461)
+
+[node name="shooting_range_target10" parent="Node3D" instance=ExtResource("11_qsuvo")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6.971039, 0.43840468, -2.2274609)
+
+[node name="shooting_range_target11" parent="Node3D" instance=ExtResource("11_qsuvo")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6.971039, 0.43840468, -19.770449)
+
+[node name="shooting_range_target12" parent="Node3D" instance=ExtResource("11_qsuvo")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6.971039, 0.43840468, -27.522182)
+
+[node name="shooting_range_target13" parent="Node3D" instance=ExtResource("11_qsuvo")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 12.068581, 0.43840468, -27.522182)
+
+[node name="shooting_range_target14" parent="Node3D" instance=ExtResource("11_qsuvo")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 12.068581, 0.43840468, -18.57074)
+
+[node name="shooting_range_target15" parent="Node3D" instance=ExtResource("11_qsuvo")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5.450325, 0.43840468, -18.57074)
+
+[node name="shooting_range_target16" parent="Node3D" instance=ExtResource("11_qsuvo")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5.450325, 0.43840468, -23.707441)
+
+[node name="shooting_range_target17" parent="Node3D" instance=ExtResource("11_qsuvo")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5.450325, 0.43840468, -29.707441)
+
+[node name="shooting_range_target18" parent="Node3D" instance=ExtResource("11_qsuvo")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5.450325, 0.43840468, -35.422615)
+
+[node name="shooting_range_target19" parent="Node3D" instance=ExtResource("11_qsuvo")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5.3164597, 0, 0)

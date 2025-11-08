@@ -15,6 +15,8 @@ const JUMP_VELOCITY = 4.5
 @export_category("Component Refrences")
 @export var player_statemachine : StateMachine
 @export var CameraJuice_Component : CameraJuiceComponent
+@export var UiComponent : PlayerUiComponent
+@export var WPM : WeaponManager
 
 
 @export_category("Movement Bools")

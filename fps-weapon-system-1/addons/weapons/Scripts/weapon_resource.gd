@@ -31,13 +31,20 @@ class_name WeaponResource
 @export_category("sounds")
 @export var shooting_sound : AudioStream
 
+
 @export_category("Juice_effect_multiplier")
 @export var bob_multiplier : float
 @export var sway_multiplier : float
 @export var side_rot_multiplier  :float
 @export_range(0.0 ,1.0 , 0.01) var shoot_trauma : float
 
-
+@export_category("AimDownSight")
+@export var CanADS : bool
+@export var ads_pos : Vector3
+@export var ads_zoom : float
+@export var ads_bob_multiplier : float
+@export var ads_sway_multiplier:float
+@export var ads_side_rot_multiplier : float
 
 @export_category("Weapon_Settings")
 @export var Autofire : bool
@@ -45,3 +52,10 @@ class_name WeaponResource
 @export_category("Weapon Transforms")
 @export var position  : Vector3
 @export var rotaion : Vector3
+
+
+
+@export_category("deafults")
+@export var default_bob_multiplier : float
+@export var default_sway_multiplier : float
+@export var deafualt_side_rot_multiplier  :float

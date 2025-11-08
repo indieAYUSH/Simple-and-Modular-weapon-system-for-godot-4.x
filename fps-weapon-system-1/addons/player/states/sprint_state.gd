@@ -10,7 +10,7 @@ class_name SprintState   extends PlayerMovementState
 
 func enter()->void:
 	Player.CameraJuice_Component.fov_manager(fov_change)
-	
+	Player.WPM.force_stop_ads = true
 
 
 
@@ -39,5 +39,5 @@ func _update(delta : float) -> void:
 func exit()-> void:
 	Player.CameraJuice_Component.fov_manager(-fov_change)
 	Player.can_lean = true
-	
+	Player.WPM.force_stop_ads = false
 	

@@ -7,7 +7,7 @@
 script = ExtResource("1_dj6wa")
 type = 1
 expiry_time = 4.0
-impact_force = 0.9
+impact_force = 0.2
 rigid_projectile_scene = ExtResource("2_cj76a")
 projectile_velocity = 400.0
 metadata/_custom_type_script = "uid://f3ep3x33g37t"

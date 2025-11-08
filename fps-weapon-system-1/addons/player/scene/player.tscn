@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://5ym40qt2aau8"]
+[gd_scene load_steps=53 format=3 uid="uid://5ym40qt2aau8"]
 
 [ext_resource type="Script" uid="uid://bcqieithuf66l" path="res://addons/player/scripts/player.gd" id="1_qvlqn"]
 [ext_resource type="Script" uid="uid://boivvjeleq8ja" path="res://addons/player/scripts/Components/camera_controller_component.gd" id="2_8p4p3"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://dcb0sh25uoy4i" path="res://addons/Assests/keyboard_e.svg" id="16_v58eg"]
 [ext_resource type="Script" uid="uid://c0axoo45iv26" path="res://addons/Demo/debug_ui.gd" id="17_1vt7l"]
 [ext_resource type="FontFile" uid="uid://3op67rxtj0f6" path="res://addons/Assests/Fonts/roboto/Roboto-Black.ttf" id="17_xkm3v"]
+[ext_resource type="Script" uid="uid://41krvxlxp32v" path="res://addons/player/UI/ui.gd" id="18_ygc1f"]
 [ext_resource type="Texture2D" uid="uid://ceyssin1qct24" path="res://addons/Assests/crosshair008.png" id="22_sto40"]
 [ext_resource type="Script" uid="uid://nr0k8pums4yn" path="res://addons/player/states/crouch_state.gd" id="24_d7dwe"]
 [ext_resource type="Script" uid="uid://cii81r4ip1tj4" path="res://addons/player/UI/scripts/weapon_hud.gd" id="34_fmnqm"]
@@ -283,7 +284,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 0.17453292)]
+"values": [Vector3(0, 0, 0.08726646)]
 }
 
 [sub_resource type="Animation" id="Animation_3x4x4"]
@@ -322,7 +323,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 0.10471976)]
+"values": [Vector3(0, 0, 0.08726646)]
 }
 
 [sub_resource type="Animation" id="Animation_d7dwe"]
@@ -400,7 +401,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, -0.13962634)]
+"values": [Vector3(0, 0, -0.08726646)]
 }
 
 [sub_resource type="Animation" id="Animation_j2dof"]
@@ -439,7 +440,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, -0.10471976)]
+"values": [Vector3(0, 0, 0.08726646)]
 }
 
 [sub_resource type="Animation" id="Animation_hu6bb"]
@@ -556,10 +557,12 @@ nodes/lesn_r_col/node = SubResource("AnimationNodeBlend2_3xh5d")
 nodes/lesn_r_col/position = Vector2(-80, 980)
 node_connections = [&"output", 0, &"lean_blend", &"lean_blend", 0, &"lean_left_collison", &"lean_blend", 1, &"lean_rest", &"lean_blend", 2, &"lesn_r_col", &"lean_left_collison", 0, &"lean_left", &"lean_left_collison", 1, &"lean_left_colision", &"lesn_r_col", 0, &"lean_right", &"lesn_r_col", 1, &"lean_right_collsion 2"]
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("player_statemachine", "CameraJuice_Component", "left_lean_collision", "right_lean_collision")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("player_statemachine", "CameraJuice_Component", "UiComponent", "WPM", "left_lean_collision", "right_lean_collision")]
 script = ExtResource("1_qvlqn")
 player_statemachine = NodePath("PlayerStateMachine")
 CameraJuice_Component = NodePath("head/CameraControllerComponent/CameraJuice")
+UiComponent = NodePath("UI")
+WPM = NodePath("head/CameraControllerComponent/CameraJuice/lean_pivot/screen_shake/WeaponManager")
 current_character = ExtResource("2_xsu4s")
 left_lean_collision = NodePath("head/CameraControllerComponent/obstacle_checker/lean_collision_checker_left")
 right_lean_collision = NodePath("head/CameraControllerComponent/obstacle_checker/lean_collision_checker_right")
@@ -658,8 +661,10 @@ metadata/_custom_type_script = "uid://nr0k8pums4yn"
 script = ExtResource("12_d1ki0")
 metadata/_custom_type_script = "uid://dbavcwgvqyiyg"
 
-[node name="DashState" type="Node" parent="PlayerStateMachine"]
+[node name="DashState" type="Node" parent="PlayerStateMachine" node_paths=PackedStringArray("camera", "DashCoolDownTimer")]
 script = ExtResource("14_w2vqi")
+camera = NodePath("../../head/CameraControllerComponent/CameraJuice/lean_pivot/screen_shake/Camera3D")
+DashCoolDownTimer = NodePath("../../TimersHolderComponent/DashCoolDown")
 metadata/_custom_type_script = "uid://clyumisqx0i7s"
 
 [node name="SlideState" type="Node" parent="PlayerStateMachine"]
@@ -756,6 +761,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+script = ExtResource("18_ygc1f")
 
 [node name="UICrosshair" type="TextureRect" parent="UI"]
 layout_mode = 1

@@ -284,7 +284,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 1.6493361, 0)]
+"values": [Vector3(0, 1.5707964, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -296,7 +296,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0.28, 0)]
+"values": [Vector3(0, 0, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -348,7 +348,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.03333334, 0.0432, 0.06666668),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 1.6493361, 0), Vector3(0, 1.6493361, 0), Vector3(-0.05235988, 1.6493361, 0.06981317), Vector3(0, 1.6493361, 0)]
+"values": [Vector3(0, 1.5707964, 0), Vector3(0, 1.5707964, 0), Vector3(-0.05235988, 1.5707964, 0.06981317), Vector3(0, 1.5707964, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -385,7 +385,7 @@ _data = {
 [node name="Glock18" type="Node3D"]
 
 [node name="PistolMesh" type="Node3D" parent="."]
-transform = Transform3D(-0.003530657, 0, 0.044861272, 0, 0.045, 0, -0.044861272, 0, -0.003530657, 0, 0.28, 0)
+transform = Transform3D(-1.9670123e-09, 0, 0.044999994, 0, 0.045, 0, -0.044999994, 0, -1.9670123e-09, 0, 0, 0)
 
 [node name="defaultMaterial" type="MeshInstance3D" parent="PistolMesh"]
 mesh = SubResource("ArrayMesh_15lvn")

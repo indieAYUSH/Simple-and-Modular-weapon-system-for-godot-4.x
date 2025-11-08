@@ -815,7 +815,7 @@ libraries = {
 }
 
 [node name="barrel_pos" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.21057218, -1.3884702)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.183, 0.211, -1.427)
 
 [node name="SHOOTsfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_ncfq7")

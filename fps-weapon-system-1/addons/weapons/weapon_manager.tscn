@@ -34,5 +34,3 @@ lerp_speed = 10.0
 [node name="ShootingVFXManager" type="Node3D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("10_7t6pj")
-
-[node name="Camera3D" type="Camera3D" parent="."]

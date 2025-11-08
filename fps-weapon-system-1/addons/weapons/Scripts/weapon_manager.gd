@@ -14,21 +14,30 @@ var debug_draw_enabled := true
 
 @export_category("Vars")
 @export var weapons_stack : Array[WeaponResource]
-@export var selected_weapoon : String = "GrenadeLauncher"
+@export var selected_weapoon : String = "AKM"
 
 var current_weapon  : WeaponResource = null
 enum {NULL , HITSCAN , PROJECTILE}
 var barrel
+var defaulth_pov : float
+
+#ADS vars
+var force_stop_ads : bool = false
+var ads_progress : float = 0.0
 
 func _ready():
 	load_new_weapon(selected_weapoon)
-	
+	#defaulth_pov = PlayerContr.camera_3d.pov
 
 func _input(event):
 	if event.is_action_pressed("shoot"):
 		shoot()
 	if event.is_action_pressed("reload"):
 		reload()
+
+
+func _process(delta):
+	handle_ads(delta)
 
 func load_new_weapon(weapon_namae : String) -> void :
 	for i in weapons_stack:
@@ -53,7 +62,9 @@ func load_new_weapon(weapon_namae : String) -> void :
 func WeaponAnimationFinished(anim_name:String) -> void:
 	if anim_name == current_weapon.shooting_animation and current_weapon.Autofire and Input.is_action_pressed("shoot"):
 		shoot()
-
+	if anim_name == current_weapon.reload_animation:
+		manage_ammo(current_weapon.mag_capacity)
+		force_stop_ads = false
 
 func shoot():
 	if !WeaponAnimationPlayer.is_playing():
@@ -74,10 +85,42 @@ func reload() -> void :
 		return
 	if !WeaponAnimationPlayer.is_playing():
 		WeaponAnimationPlayer.play(current_weapon.reload_animation)
-		current_weapon.current_ammo += min(current_weapon.mag_capacity , current_weapon.mag_capacity - current_weapon.current_ammo)
+		force_stop_ads = true
+		
+
+func manage_ammo(add_amt : float):
+	current_weapon.current_ammo += min(add_amt , add_amt - current_weapon.current_ammo)
+	PlayerContr.emit_signal("UpdateWeaponHud" , current_weapon.current_ammo)
 
 func load_bullet() -> void:
 	var bullet : Bullet = current_weapon.BulletScene.instantiate()
 	add_child(bullet)
 	bullet.global_position = barrel.global_position
 	bullet._set_fire_projectile(current_weapon.spread , current_weapon.damage , current_weapon.weapon_range , shooting_vfx_manager)
+
+
+
+func handle_ads(delta):
+	if !current_weapon.CanADS and !current_weapon:
+		return
+	
+	if force_stop_ads:
+		# Force reset ADS before stopping
+		weapon_holder.position = lerp(weapon_holder.position, current_weapon.position, 10.0*delta)
+		PlayerContr.UiComponent.unhide_crosshair()
+		current_weapon.bob_multiplier = current_weapon.default_bob_multiplier
+		current_weapon.sway_multiplier = current_weapon.default_sway_multiplier
+		return  # Exit after resetting
+	
+	if Input.is_action_pressed("ADS"):
+		weapon_holder.position = lerp(weapon_holder.position , current_weapon.ads_pos , 10.0*delta)
+		PlayerContr.UiComponent.hide_crosshair()
+		current_weapon.bob_multiplier = current_weapon.ads_bob_multiplier
+		current_weapon.sway_multiplier = current_weapon.ads_sway_multiplier
+		current_weapon.side_rot_multiplier = current_weapon.ads_side_rot_multiplier
+		#PlayerContr.camera_3d.pov = lerp(PlayerContr.camera_3d.pov , defaulth_pov-current_weapon.ads_zoom , 0.20)
+	else :
+		weapon_holder.position = lerp(weapon_holder.position , current_weapon.position , 10.0*delta)
+		PlayerContr.UiComponent.unhide_crosshair()
+		current_weapon.bob_multiplier = current_weapon.default_bob_multiplier
+		current_weapon.sway_multiplier = current_weapon.default_sway_multiplier

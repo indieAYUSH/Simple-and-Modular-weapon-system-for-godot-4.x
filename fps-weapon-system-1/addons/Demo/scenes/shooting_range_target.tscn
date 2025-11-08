@@ -1,4 +1,6 @@
-[gd_scene load_steps=9 format=4 uid="uid://dthkwu5kx7q6r"]
+[gd_scene load_steps=14 format=4 uid="uid://dthkwu5kx7q6r"]
+
+[ext_resource type="Script" uid="uid://d4h286q7u0lkh" path="res://addons/Demo/scenes/shooting_range_target.gd" id="1_1w4lx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_22pra"]
 diffuse_mode = 3
@@ -76,14 +78,141 @@ _surfaces = [{
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_oeg0n"]
 points = PackedVector3Array(-0.05, -0.6083496, -9.790063e-06, -0.035356306, -0.6083496, -0.035356306, -0.035356306, -0.6083496, 0.03534651, -0.05, 0.6083496, -9.790063e-06, -0.035356306, 0.6083496, -0.035356306, 0, -0.6083496, -0.05, -9.790063e-06, -0.6083496, 0.05, -0.035356306, 0.6083496, 0.03534651, 0, 0.6083496, -0.05, 0.03534651, -0.6083496, -0.035356306, 0.03534651, -0.6083496, 0.03534651, -9.790063e-06, 0.6083496, 0.05, 0.03534651, 0.6083496, -0.035356306, 0.05, -0.6083496, 0, 0.03534651, 0.6083496, 0.03534651, 0.05, 0.6083496, 0)
 
+[sub_resource type="Animation" id="Animation_w7n35"]
+resource_name = "death"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape3D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CSGBakedMeshInstance3D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape3D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.36666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_f04xb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape3D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CSGBakedMeshInstance3D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape3D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_gykkq"]
+resource_name = "respawn"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape3D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.033333335, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CSGBakedMeshInstance3D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.033333335, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape3D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oeg0n"]
+_data = {
+&"RESET": SubResource("Animation_f04xb"),
+&"death": SubResource("Animation_w7n35"),
+&"respawn": SubResource("Animation_gykkq")
+}
+
 [node name="shooting_range_target" type="CharacterBody3D"]
+script = ExtResource("1_1w4lx")
 
 [node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32039332, 0)
 mesh = SubResource("ArrayMesh_f04xb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.994434, 0.105361596, 0, -0.105361596, 0.994434, 0, 0, 0, 1, 0, 0.32039332, 0)
+transform = Transform3D(0.994434, 0.10536159, 0, -0.10536159, 0.994434, 0, 0, 0, 1, 0, 0.32039332, 0)
 shape = SubResource("ConvexPolygonShape3D_gykkq")
 
 [node name="CSGBakedMeshInstance3D2" type="MeshInstance3D" parent="."]
@@ -94,3 +223,14 @@ mesh = SubResource("ArrayMesh_gykkq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBakedMeshInstance3D2/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_oeg0n")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_oeg0n")
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
