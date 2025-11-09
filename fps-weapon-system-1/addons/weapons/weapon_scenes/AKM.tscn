@@ -1,8 +1,12 @@
-[gd_scene load_steps=41 format=4 uid="uid://57s6rr1fakqm"]
+[gd_scene load_steps=47 format=4 uid="uid://57s6rr1fakqm"]
 
 [ext_resource type="Material" uid="uid://chqs5o7isi467" path="res://addons/weapons/weapon_scenes/AKM_METAL.tres" id="1_462wh"]
+[ext_resource type="Script" uid="uid://b8j6df87xii68" path="res://addons/weapons/Scripts/GunManager.gd" id="1_ftxtp"]
+[ext_resource type="PackedScene" uid="uid://bfh60q7yoj82w" path="res://addons/weapons/projectiles/riffile_bullets.tscn" id="2_1pyu7"]
 [ext_resource type="AudioStream" uid="uid://c50qvwugbnnnq" path="res://addons/Assests/gunsfx/akme Sound Effects (mp3cut.net).wav" id="2_ncfq7"]
+[ext_resource type="PackedScene" uid="uid://dyj1qpfv6i6x1" path="res://addons/weapons/Vfx/muzzle_flash.tscn" id="3_4ct5k"]
 [ext_resource type="AudioStream" uid="uid://dp71anrdr0e35" path="res://addons/Assests/gunsfx/akmreload.mp3" id="3_kqlhi"]
+[ext_resource type="Script" uid="uid://bpwu3mgofmf6r" path="res://addons/weapons/Scripts/shooting_vfx_manager.gd" id="7_4ubi1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uhgcn"]
 resource_name = "Material.012"
@@ -672,6 +676,18 @@ tracks/7/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_uhgcn"]
 resource_name = "SHOOT"
@@ -716,15 +732,117 @@ tracks/2/keys = {
 [sub_resource type="Animation" id="Animation_ncfq7"]
 resource_name = "shoot"
 
+[sub_resource type="Animation" id="Animation_ftxtp"]
+resource_name = "pull_away"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666669),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sketchfab_model:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-1.5707964, 1.5707964, 0), Vector3(-2.3911011, 2.3561945, -0.44854963)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sketchfab_model:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -1.535, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1pyu7"]
+resource_name = "pull_out"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sketchfab_model:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-2.3911011, 2.3561945, -0.44854963), Vector3(-1.5707964, 1.5707964, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sketchfab_model:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -1.535, 0), Vector3(0, 0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kqlhi"]
 _data = {
 &"RELOAD": SubResource("Animation_kqlhi"),
 &"RESET": SubResource("Animation_462wh"),
 &"SHOOT": SubResource("Animation_uhgcn"),
+&"pull_away": SubResource("Animation_ftxtp"),
+&"pull_out": SubResource("Animation_1pyu7"),
 &"shoot": SubResource("Animation_ncfq7")
 }
 
-[node name="AKM" type="Node3D"]
+[node name="AKM" type="Node3D" node_paths=PackedStringArray("barrel", "ShootinVfxManager", "WeaponAnimationPlayer")]
+visible = false
+script = ExtResource("1_ftxtp")
+Damage = 30.0
+GunRange = 400.0
+current_ammo = 30
+magzine = 30
+reserved_ammo = 120
+max_ammo = 200
+pull_out_anim = "pull_out"
+pull_away_anim = "pull_away"
+shooting_anim = "SHOOT"
+reload_anim = "RELOAD"
+autofire = true
+type = 2
+bullet_scne = ExtResource("2_1pyu7")
+muzzle_flash_scne = ExtResource("3_4ct5k")
+barrel = NodePath("barrel_pos")
+ShootinVfxManager = NodePath("ShootingVFXManager")
+WeaponAnimationPlayer = NodePath("AnimationPlayer")
+metadata/_custom_type_script = "uid://b8j6df87xii68"
 
 [node name="Sketchfab_model" type="Node3D" parent="."]
 transform = Transform3D(-2.5789719e-08, -0.59, -2.5789719e-08, 0, -2.5789719e-08, 0.59, -0.59, 2.5789719e-08, 1.1273044e-15, 0, 0, 0)
@@ -815,7 +933,7 @@ libraries = {
 }
 
 [node name="barrel_pos" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.183, 0.211, -1.427)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06805321, 0.211, -1.427)
 
 [node name="SHOOTsfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_ncfq7")
@@ -825,3 +943,6 @@ pitch_scale = 1.1
 [node name="RELOADsfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_kqlhi")
 volume_db = 1.4
+
+[node name="ShootingVFXManager" type="Node3D" parent="."]
+script = ExtResource("7_4ubi1")

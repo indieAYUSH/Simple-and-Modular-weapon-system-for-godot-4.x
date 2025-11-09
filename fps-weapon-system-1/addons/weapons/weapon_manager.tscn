@@ -8,14 +8,15 @@
 [ext_resource type="Resource" uid="uid://pvx5bhr7xp4n" path="res://addons/weapons/weapons_res/Glock_19.tres" id="6_6qnpu"]
 [ext_resource type="Resource" uid="uid://bd6qapmmw11gb" path="res://addons/weapons/weapons_res/GrenadeLauncher.tres" id="7_ue605"]
 [ext_resource type="Resource" uid="uid://ch3yic65cww3j" path="res://addons/weapons/weapons_res/ShotGunLite.tres" id="8_5w2q8"]
+[ext_resource type="Resource" uid="uid://cv4yamvsk3q2g" path="res://addons/weapons/weapons_res/CrowBar.tres" id="9_7gan4"]
 [ext_resource type="Script" uid="uid://b808s2vhuelg3" path="res://addons/weapons/Scripts/weapon_juice_component.gd" id="9_dc3hj"]
-[ext_resource type="Script" uid="uid://bpwu3mgofmf6r" path="res://addons/weapons/Scripts/shooting_vfx_manager.gd" id="10_7t6pj"]
 
 [node name="WeaponManager" type="Node3D" node_paths=PackedStringArray("weapon_juice_component", "shooting_vfx_manager")]
 script = ExtResource("1_7gan4")
 weapon_juice_component = NodePath("WeaponJuice")
-shooting_vfx_manager = NodePath("ShootingVFXManager")
-weapons_stack = Array[ExtResource("2_hskht")]([ExtResource("3_ornmv"), ExtResource("4_4xfbu"), ExtResource("5_m7wf1"), ExtResource("6_6qnpu"), ExtResource("7_ue605"), ExtResource("8_5w2q8")])
+shooting_vfx_manager = NodePath("")
+weapon_resources = Array[ExtResource("2_hskht")]([ExtResource("3_ornmv"), ExtResource("4_4xfbu"), ExtResource("6_6qnpu"), ExtResource("7_ue605"), ExtResource("5_m7wf1"), ExtResource("8_5w2q8"), ExtResource("9_7gan4")])
+load_out = Array[String](["CrowBar", "AKM"])
 
 [node name="WeaponJuice" type="Node3D" parent="." node_paths=PackedStringArray("weapon_holder")]
 unique_name_in_owner = true
@@ -30,7 +31,3 @@ amplitude = 0.035
 lerp_speed = 10.0
 
 [node name="weapon_holder" type="Node3D" parent="WeaponJuice"]
-
-[node name="ShootingVFXManager" type="Node3D" parent="."]
-unique_name_in_owner = true
-script = ExtResource("10_7t6pj")

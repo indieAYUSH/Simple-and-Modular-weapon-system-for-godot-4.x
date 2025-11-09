@@ -97,6 +97,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 1, 0)
 size = Vector3(1, 1, 80)
 material = ExtResource("1_o5r1u")
 
+[node name="CSGBox3D13" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 42.592896, 1.5388336, 3.7448575)
+size = Vector3(1, 2.0776672, 44.983643)
+material = ExtResource("1_o5r1u")
+
 [node name="CSGBox3D7" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 2.5, -26.396)
 size = Vector3(1, 5, 3.028)
@@ -154,50 +159,88 @@ polygon = PackedVector2Array(-7.0809712, 0.034350872, 0.19585276, 2.0029776, 0.9
 depth = 4.5
 material = SubResource("StandardMaterial3D_cbyct")
 
+[node name="CSGBox3D14" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.507, 1.087, 29.633)
+size = Vector3(5.820801, 1, 7.8450317)
+material = ExtResource("1_o5r1u")
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.072, 2.5, 29.633)
+size = Vector3(5.820801, 1, 7.8450317)
+material = ExtResource("1_o5r1u")
+
 [node name="Player" parent="." instance=ExtResource("1_otcoh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.725523, 4.9455924, 0)
 
 [node name="rigidboxprops" parent="." instance=ExtResource("3_c6lbi")]
+process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9324102, 0.9999981, 6.845028)
+visible = false
 
 [node name="rigidsphereprops" parent="." instance=ExtResource("4_6tako")]
+process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6590214, 2.9805164, 5.35285)
+visible = false
 
 [node name="rigidboxprops2" parent="." instance=ExtResource("3_c6lbi")]
+process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6372728, 1, 5.48365)
+visible = false
 
 [node name="rigidsphereprops2" parent="." instance=ExtResource("4_6tako")]
+process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2045126, 0.9999981, 7.8560524)
+visible = false
 
 [node name="rigidboxprops3" parent="." instance=ExtResource("3_c6lbi")]
+process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5075884, 1.9999981, 7.093052)
+visible = false
 
 [node name="rigidboxprops4" parent="." instance=ExtResource("3_c6lbi")]
+process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5972958, 1, 13.072464)
+visible = false
 
 [node name="rigidboxprops5" parent="." instance=ExtResource("3_c6lbi")]
+process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7553091, 1, 14.231525)
+visible = false
 
 [node name="rigidsphereprops3" parent="." instance=ExtResource("4_6tako")]
+process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3729973, 0.9999981, 13.306953)
+visible = false
 
 [node name="rigidboxprops6" parent="." instance=ExtResource("3_c6lbi")]
+process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16030884, 1, 10.283894)
+visible = false
 
 [node name="rigidsphereprops4" parent="." instance=ExtResource("4_6tako")]
+process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.303797, 3.5365844, 0.0666585)
+visible = false
 
 [node name="rigidsphereprops5" parent="." instance=ExtResource("4_6tako")]
+process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2462215, 4.6, 0.18673229)
+visible = false
 
 [node name="rigidboxprops7" parent="." instance=ExtResource("3_c6lbi")]
+process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6195345, 5.402164, 2.282053)
+visible = false
 
 [node name="rigidsphereprops6" parent="." instance=ExtResource("4_6tako")]
+process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.41679192, 3.62622, -12.21162)
+visible = false
 
 [node name="rigidboxprops8" parent="." instance=ExtResource("3_c6lbi")]
+process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.466754, 4.6, 1.6457028)
+visible = false
 
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.898163, 0, 0)

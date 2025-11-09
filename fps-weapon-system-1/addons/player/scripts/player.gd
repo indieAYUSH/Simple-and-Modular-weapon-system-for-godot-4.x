@@ -2,8 +2,9 @@ class_name PlayerController  extends CharacterBody3D
 
 
 const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
+const JUMP_VELOCITY = 6
 
+const gravity : float = 11.5
 
 @onready var head = %head
 @onready var crouched_collsion_shape = $crouched_collsion_shape
@@ -98,7 +99,7 @@ func update_movement(_speed : float , _acceleration : float , Deacceleration :fl
 
 func update_gravity(delta):
 	if not is_on_floor():
-		velocity += get_gravity() * delta
+		velocity.y -= gravity * delta
 
 
 func crouch():

@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cub0ce102843a"]
 
-[ext_resource type="Script" uid="uid://ceqc7x1l2lswi" path="res://weapons/Vfx/scripts/bullet_hit_effeect_particles.gd" id="1_h2ekw"]
+[ext_resource type="Script" uid="uid://ceqc7x1l2lswi" path="res://addons/weapons/Vfx/scripts/bullet_hit_effeect_particles.gd" id="1_h2ekw"]
 
 [sub_resource type="Gradient" id="Gradient_d87dy"]
 colors = PackedColorArray(0.8509804, 0.6901961, 0, 1, 0.85490197, 0.9411765, 0.0627451, 1)
@@ -27,27 +27,28 @@ color = Color(0.8352941, 0.6313726, 0, 1)
 color_ramp = SubResource("GradientTexture1D_h2ekw")
 emission_curve = SubResource("CurveTexture_b46wt")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cjfyu"]
-diffuse_mode = 3
-vertex_color_use_as_albedo = true
-albedo_color = Color(1, 1, 0.03137255, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n7iin"]
+albedo_color = Color(1, 1, 0, 1)
+emission_enabled = true
+emission = Color(0.80518025, 0.63476294, 0.032290343, 1)
+emission_energy_multiplier = 4.0
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
 
-[sub_resource type="SphereMesh" id="SphereMesh_fjdl0"]
-material = SubResource("StandardMaterial3D_cjfyu")
-radius = 0.06
-height = 0.13
-radial_segments = 4
-rings = 1
+[sub_resource type="QuadMesh" id="QuadMesh_gkn7g"]
+material = SubResource("StandardMaterial3D_n7iin")
+size = Vector2(0.1, 0.1)
 
 [node name="BulletHitEffeectParticles" type="GPUParticles3D"]
 cast_shadow = 0
 emitting = false
-amount = 13
-lifetime = 0.7
+lifetime = 0.4
 one_shot = true
 explosiveness = 0.76
 process_material = SubResource("ParticleProcessMaterial_pvac1")
-draw_pass_1 = SubResource("SphereMesh_fjdl0")
+draw_pass_1 = SubResource("QuadMesh_gkn7g")
 script = ExtResource("1_h2ekw")
 
 [connection signal="finished" from="." to="." method="_on_finished"]

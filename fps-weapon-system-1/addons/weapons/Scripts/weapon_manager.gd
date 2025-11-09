@@ -13,11 +13,23 @@ var debug_draw_enabled := true
 @onready var weapon_holder = $WeaponJuice/weapon_holder
 
 @export_category("Vars")
-@export var weapons_stack : Array[WeaponResource]
-@export var selected_weapoon : String = "AKM"
-
+@export var weapon_resources : Array[WeaponResource]
+@export var selected_weapoon : String = ""
+@export var load_out : Array[String]
+@export var melee_weapon : String
+ 
+var weapon_index : int = 0
+var weapon_stack : Array
+var weapon_list  = {}
 var current_weapon  : WeaponResource = null
-enum {NULL , HITSCAN , PROJECTILE}
+var cw_node 
+#multiplies
+
+var bob_multiplier : float
+var sway_multiplier : float
+var side_rot_multiplier  :float
+
+enum {NULL , MELEE , GUN}
 var barrel
 var defaulth_pov : float
 
@@ -26,101 +38,104 @@ var force_stop_ads : bool = false
 var ads_progress : float = 0.0
 
 func _ready():
-	load_new_weapon(selected_weapoon)
+	Intialize()
 	#defaulth_pov = PlayerContr.camera_3d.pov
 
 func _input(event):
 	if event.is_action_pressed("shoot"):
-		shoot()
-	if event.is_action_pressed("reload"):
-		reload()
+		use_weapon()
+	
+	if event.is_action_pressed("slot1"):
+		exit_weapon()
+		change_wapon(0)
+	if event.is_action_pressed("slot2"):
+		exit_weapon()
+		change_wapon(1)
+	#if event.is_action_pressed("slot3"):
+		#weapon_index = 2
 
 
 func _process(delta):
 	handle_ads(delta)
 
-func load_new_weapon(weapon_namae : String) -> void :
-	for i in weapons_stack:
-		if i.weapon_name == weapon_namae :
-			current_weapon = i
-	
-	var weapon_scene = current_weapon.weapon_scene.instantiate()
-	weapon_holder.position = current_weapon.position
-	weapon_holder.rotation = Vector3(deg_to_rad(current_weapon.rotaion.x),deg_to_rad(current_weapon.rotaion.y),deg_to_rad(current_weapon.rotaion.z))
-	
-	weapon_holder.add_child(weapon_scene)
-	WeaponAnimationPlayer = weapon_scene.get_node("AnimationPlayer")
-	WeaponShootingAudioPLayer = weapon_scene.get_node("SHOOTsfx")
-	barrel = weapon_scene.get_node("barrel_pos")
-	PlayerContr.emit_signal("UpdateWeaponHud" , current_weapon.current_ammo)
-	WeaponAnimationPlayer.animation_finished.connect(WeaponAnimationFinished)
-	shooting_vfx_manager.load_muzzle_flash(current_weapon.muzzle_flash , barrel.global_position , barrel)
-	
-	
-	
 
-func WeaponAnimationFinished(anim_name:String) -> void:
-	if anim_name == current_weapon.shooting_animation and current_weapon.Autofire and Input.is_action_pressed("shoot"):
-		shoot()
-	if anim_name == current_weapon.reload_animation:
-		manage_ammo(current_weapon.mag_capacity)
-		force_stop_ads = false
+func Intialize():
+	for weapon in weapon_resources:
+		weapon_list[weapon.weapon_name] = weapon
+	for i in load_out:
+		weapon_stack.push_back(weapon_list[i])
+	selected_weapoon = load_out[weapon_index]
+	load_weapon(weapon_stack)
 
-func shoot():
-	if !WeaponAnimationPlayer.is_playing():
-		if current_weapon.current_ammo != 0 :
-			WeaponAnimationPlayer.play(current_weapon.shooting_animation)
-			shooting_vfx_manager.show_muzle_flash()
-			current_weapon.current_ammo -= 1
-			PlayerContr.emit_signal("UpdateWeaponHud" , current_weapon.current_ammo)
-			load_bullet()
-			PlayerContr.CameraJuice_Component._add_shake(current_weapon.shoot_trauma)
-
-		else:
-			reload()
+func load_weapon(weapons_rs) -> void :
+	for i in weapons_rs:
+		var w = i.weapon_scene.instantiate()
+		weapon_holder.add_child(w)
+	enter_weapon(weapon_index)
 
 
-func reload() -> void :
-	if current_weapon.current_ammo == current_weapon.mag_capacity:
+func use_weapon():
+	if current_weapon == null:
 		return
-	if !WeaponAnimationPlayer.is_playing():
-		WeaponAnimationPlayer.play(current_weapon.reload_animation)
-		force_stop_ads = true
-		
 
-func manage_ammo(add_amt : float):
-	current_weapon.current_ammo += min(add_amt , add_amt - current_weapon.current_ammo)
-	PlayerContr.emit_signal("UpdateWeaponHud" , current_weapon.current_ammo)
-
-func load_bullet() -> void:
-	var bullet : Bullet = current_weapon.BulletScene.instantiate()
-	add_child(bullet)
-	bullet.global_position = barrel.global_position
-	bullet._set_fire_projectile(current_weapon.spread , current_weapon.damage , current_weapon.weapon_range , shooting_vfx_manager)
+	match current_weapon.type:
+		NULL:
+			pass
+		GUN:
+			cw_node.shoot()
+		MELEE:
+			cw_node.attack()
 
 
 
+#
+#
 func handle_ads(delta):
-	if !current_weapon.CanADS and !current_weapon:
+	if !current_weapon:
 		return
 	
 	if force_stop_ads:
 		# Force reset ADS before stopping
 		weapon_holder.position = lerp(weapon_holder.position, current_weapon.position, 10.0*delta)
 		PlayerContr.UiComponent.unhide_crosshair()
-		current_weapon.bob_multiplier = current_weapon.default_bob_multiplier
-		current_weapon.sway_multiplier = current_weapon.default_sway_multiplier
+		bob_multiplier = current_weapon.default_bob_multiplier
+		sway_multiplier = current_weapon.default_sway_multiplier
 		return  # Exit after resetting
 	
-	if Input.is_action_pressed("ADS"):
+	if Input.is_action_pressed("ADS")and current_weapon.CanADS :
 		weapon_holder.position = lerp(weapon_holder.position , current_weapon.ads_pos , 10.0*delta)
 		PlayerContr.UiComponent.hide_crosshair()
-		current_weapon.bob_multiplier = current_weapon.ads_bob_multiplier
-		current_weapon.sway_multiplier = current_weapon.ads_sway_multiplier
-		current_weapon.side_rot_multiplier = current_weapon.ads_side_rot_multiplier
+		bob_multiplier = current_weapon.ads_bob_multiplier
+		sway_multiplier = current_weapon.ads_sway_multiplier
+		side_rot_multiplier = current_weapon.ads_side_rot_multiplier
 		#PlayerContr.camera_3d.pov = lerp(PlayerContr.camera_3d.pov , defaulth_pov-current_weapon.ads_zoom , 0.20)
 	else :
 		weapon_holder.position = lerp(weapon_holder.position , current_weapon.position , 10.0*delta)
 		PlayerContr.UiComponent.unhide_crosshair()
-		current_weapon.bob_multiplier = current_weapon.default_bob_multiplier
-		current_weapon.sway_multiplier = current_weapon.default_sway_multiplier
+		bob_multiplier = current_weapon.default_bob_multiplier
+		sway_multiplier = current_weapon.default_sway_multiplier
+
+func exit_weapon():
+	current_weapon = null
+	if cw_node:
+		cw_node.exit()
+	
+
+func change_wapon(wp_index:int):
+	if wp_index == weapon_index:
+		return
+	if current_weapon:
+		current_weapon = null
+	if cw_node != null:
+		cw_node = null
+	weapon_index = wp_index
+	exit_weapon()
+
+func enter_weapon(weapon_index : int):
+	current_weapon = weapon_stack[weapon_index]
+	print(current_weapon)
+	weapon_holder.position = current_weapon.position
+	weapon_holder.rotation = Vector3(deg_to_rad(current_weapon.rotaion.x),deg_to_rad(current_weapon.rotaion.y),deg_to_rad(current_weapon.rotaion.z))
+	cw_node = weapon_holder.get_node(current_weapon.weapon_name)
+	if cw_node:
+		cw_node.enter()

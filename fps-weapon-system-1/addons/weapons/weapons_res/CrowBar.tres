@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="WeaponResource" load_steps=3 format=3 uid="uid://cv4yamvsk3q2g"]
+
+[ext_resource type="Script" uid="uid://bttf06c46xd3g" path="res://addons/weapons/Scripts/weapon_resource.gd" id="1_a3n7r"]
+[ext_resource type="PackedScene" uid="uid://msc6f4nxhtqp" path="res://addons/weapons/weapon_scenes/crow_bar.tscn" id="2_xrr4v"]
+
+[resource]
+script = ExtResource("1_a3n7r")
+weapon_name = "CrowBar"
+weapon_scene = ExtResource("2_xrr4v")
+type = 1
+position = Vector3(0.415, -0.225, -0.97)
+rotaion = Vector3(0, 2, 0)
+default_bob_multiplier = 0.5
+default_sway_multiplier = 1.2
+metadata/_custom_type_script = "uid://bttf06c46xd3g"

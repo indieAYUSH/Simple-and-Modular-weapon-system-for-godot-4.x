@@ -40,11 +40,11 @@ func _process(delta):
 
 
 func _sway(amount: Vector2) -> void :
-	parent.position.x += amount.x * 0.09 * parent.current_weapon.sway_multiplier
-	parent.position.y += amount.y * 0.09 * parent.current_weapon.sway_multiplier
+	parent.position.x += amount.x * 0.09 * parent.sway_multiplier
+	parent.position.y += amount.y * 0.09 * parent.sway_multiplier
 	
-	parent.rotation.x += deg_to_rad(amount.x * 0.08)  * parent.current_weapon.sway_multiplier
-	parent.rotation.y += deg_to_rad (amount.y * 0.05)  * parent.current_weapon.sway_multiplier
+	parent.rotation.x += deg_to_rad(amount.x * 0.08)  * parent.sway_multiplier
+	parent.rotation.y += deg_to_rad (amount.y * 0.05)  * parent.sway_multiplier
 
 
 func weapon_juice(delta : float ) -> void:
@@ -62,8 +62,8 @@ func weapon_juice(delta : float ) -> void:
 		bob_phase += frequency*speed_factor*delta*velocity
 		bob_intensity = amplitude
 		var p = position
-		p.x =  sin(bob_phase*0.5) * amplitude * parent.current_weapon.bob_multiplier
-		p.y = sin(bob_phase)*amplitude * parent.current_weapon.bob_multiplier
+		p.x =  sin(bob_phase*0.5) * amplitude * parent.bob_multiplier
+		p.y = sin(bob_phase)*amplitude * parent.bob_multiplier
 		offset = p
 	else :
 		offset = lerp(offset , Vector3.ZERO , delta*8.0)
