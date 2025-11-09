@@ -4,7 +4,7 @@ extends Panel
 
 
 
-func update_ammo(amount:int):
+func update_ammo(amount:int ,sms):
 	label.text = str(amount)
 
 func set_ammo(amt:int):

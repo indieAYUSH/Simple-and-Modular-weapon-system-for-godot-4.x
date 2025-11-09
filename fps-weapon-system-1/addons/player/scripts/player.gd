@@ -17,7 +17,8 @@ const gravity : float = 11.5
 @export var player_statemachine : StateMachine
 @export var CameraJuice_Component : CameraJuiceComponent
 @export var UiComponent : PlayerUiComponent
-@export var WPM : WeaponManager
+@export var WPM : WeaponManager = %WeaponManager
+
 
 
 @export_category("Movement Bools")

@@ -12,6 +12,7 @@ class_name Gun
 @export var magzine : int
 @export var reserved_ammo : int
 @export var max_ammo : int
+@export var ammo_type : String
 
 
 @export_group("Animations")
@@ -37,27 +38,25 @@ class_name Gun
 @export var ShootinVfxManager : ShootingVFXManager
 
 #vars
-
+var amm_mang  :AmmunationManager
 
 
 func _ready():
-	#holder = get_parent()
-	#weapon_manager = holder.get_parent().get_parent()
-	#juice_manager = weapon_manager.weapon_juice_component
-	#
-
+	super._ready()
+	amm_mang = weapon_manager.ammunation_manager
 	WeaponAnimationPlayer.animation_finished.connect(on_anim_finished)
 	if ShootinVfxManager == null:
 		ShootinVfxManager = get_node("ShootingVFXManager")
 	ShootinVfxManager.load_muzzle_flash(muzzle_flash_scne , barrel.global_position , barrel)
-	return super._ready()
+
+
 func shoot():
 	if !WeaponAnimationPlayer.is_playing():
 		if current_ammo != 0 :
 			WeaponAnimationPlayer.play(shooting_anim)
 			ShootinVfxManager.show_muzle_flash()
 			current_ammo -= 1
-			weapon_manager.PlayerContr.emit_signal("UpdateWeaponHud" , current_ammo)
+			weapon_manager.update_ammo.emit(current_ammo , amm_mang.reserved_ammo[ammo_type])
 			load_bullet()
 		else:
 			reload()
@@ -66,8 +65,11 @@ func reload():
 	if current_ammo == magzine:
 		return
 	elif !WeaponAnimationPlayer.is_playing():
-		WeaponAnimationPlayer.play(reload_anim)
-		weapon_manager.force_stop_ads = true
+		if amm_mang.reserved_ammo[ammo_type] > 0:
+			WeaponAnimationPlayer.play(reload_anim)
+			weapon_manager.force_stop_ads = true
+		else:
+			print("out off ammo")
 
 #Right now it is managed by weapon manager
 func _handleADS(delta):
@@ -91,11 +93,15 @@ func load_bullet():
 	bullet._set_fire_projectile(spread , Damage, GunRange , ShootinVfxManager)
 
 func ammo_manager(amt):
-	current_ammo += min(amt , amt - current_ammo , amt - reserved_ammo)
+	var r_a =min(amt , amt - current_ammo , amt - reserved_ammo)
+	current_ammo += r_a
+	amm_mang.reserved_ammo[ammo_type] -= r_a
+	weapon_manager.update_ammo.emit(current_ammo , amm_mang.reserved_ammo[ammo_type])
+
 
 func enter() -> void:
 	WeaponAnimationPlayer.play(pull_out_anim)
-	weapon_manager.PlayerContr.emit_signal("UpdateWeaponHud" , current_ammo)
+	weapon_manager.update_ammo.emit(current_ammo , amm_mang.reserved_ammo[ammo_type])
 
 func exit() -> void:
 	WeaponAnimationPlayer.play(pull_away_anim)

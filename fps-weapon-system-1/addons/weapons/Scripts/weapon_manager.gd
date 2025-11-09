@@ -9,6 +9,7 @@ class_name WeaponManager
 @export var shooting_vfx_manager : ShootingVFXManager
 @export var PlayerContr : PlayerController
 @export var WeaponShootingAudioPLayer : AudioStreamPlayer
+@export var ammunation_manager : AmmunationManager
 var debug_draw_enabled := true
 @onready var weapon_holder = $WeaponJuice/weapon_holder
 
@@ -36,6 +37,10 @@ var defaulth_pov : float
 #ADS vars
 var force_stop_ads : bool = false
 var ads_progress : float = 0.0
+
+#signal
+signal update_ammo
+signal update_weapon
 
 func _ready():
 	Intialize()

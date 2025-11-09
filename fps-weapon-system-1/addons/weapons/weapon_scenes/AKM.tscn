@@ -831,6 +831,7 @@ current_ammo = 30
 magzine = 30
 reserved_ammo = 120
 max_ammo = 200
+ammo_type = "riffle"
 pull_out_anim = "pull_out"
 pull_away_anim = "pull_away"
 shooting_anim = "SHOOT"

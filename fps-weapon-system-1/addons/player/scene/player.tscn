@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://5ym40qt2aau8"]
+[gd_scene load_steps=55 format=3 uid="uid://5ym40qt2aau8"]
 
 [ext_resource type="Script" uid="uid://bcqieithuf66l" path="res://addons/player/scripts/player.gd" id="1_qvlqn"]
 [ext_resource type="Script" uid="uid://boivvjeleq8ja" path="res://addons/player/scripts/Components/camera_controller_component.gd" id="2_8p4p3"]
@@ -20,8 +20,8 @@
 [ext_resource type="FontFile" uid="uid://3op67rxtj0f6" path="res://addons/Assests/Fonts/roboto/Roboto-Black.ttf" id="17_xkm3v"]
 [ext_resource type="Script" uid="uid://41krvxlxp32v" path="res://addons/player/UI/ui.gd" id="18_ygc1f"]
 [ext_resource type="Texture2D" uid="uid://ceyssin1qct24" path="res://addons/Assests/crosshair008.png" id="22_sto40"]
+[ext_resource type="Texture2D" uid="uid://rmxkmcsh4jf5" path="res://addons/Assests/akm_ui_mat.png" id="22_ygc1f"]
 [ext_resource type="Script" uid="uid://nr0k8pums4yn" path="res://addons/player/states/crouch_state.gd" id="24_d7dwe"]
-[ext_resource type="Script" uid="uid://cii81r4ip1tj4" path="res://addons/player/UI/scripts/weapon_hud.gd" id="34_fmnqm"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_fmnqm"]
 frequency = 0.0353
@@ -506,8 +506,33 @@ _data = {
 [sub_resource type="LabelSettings" id="LabelSettings_xsu4s"]
 font = ExtResource("17_xkm3v")
 
-[sub_resource type="LabelSettings" id="LabelSettings_3fo4i"]
-font_size = 22
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t4wwt"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 0.27450982)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_44c10"]
+font = ExtResource("17_xkm3v")
+font_size = 14
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_sp8cr"]
+content_margin_left = 0.0
+content_margin_top = 4.0
+content_margin_right = 0.0
+content_margin_bottom = 4.0
+color = Color(1, 1, 1, 1)
+vertical = true
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mbkfo"]
 height = 1.7
@@ -762,6 +787,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("18_ygc1f")
+metadata/_edit_lock_ = true
 
 [node name="UICrosshair" type="TextureRect" parent="UI"]
 layout_mode = 1
@@ -806,34 +832,100 @@ text = "THIS IA A BOX HEEH"
 label_settings = SubResource("LabelSettings_xsu4s")
 horizontal_alignment = 2
 
-[node name="WeaponHud" type="Panel" parent="UI"]
+[node name="weaponhud" type="PanelContainer" parent="UI"]
+visible = false
+custom_minimum_size = Vector2(319, 85)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -46.5
-offset_top = -45.0
-offset_right = 46.5
+offset_left = -159.5
+offset_top = -85.0
+offset_right = 159.5
 grow_horizontal = 2
 grow_vertical = 0
-script = ExtResource("34_fmnqm")
+theme_override_styles/panel = SubResource("StyleBoxFlat_t4wwt")
 
-[node name="Label" type="Label" parent="UI/WeaponHud"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.634
-anchor_top = 0.5
-anchor_right = 0.634
-anchor_bottom = 0.5
-offset_left = -10.962002
-offset_top = -15.5
-offset_right = 14.037998
-offset_bottom = 15.5
-grow_horizontal = 2
-grow_vertical = 2
-label_settings = SubResource("LabelSettings_3fo4i")
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/weaponhud"]
+layout_mode = 2
+
+[node name="slot1" type="Control" parent="UI/weaponhud/HBoxContainer"]
+custom_minimum_size = Vector2(100, 85)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/weaponhud/HBoxContainer/slot1"]
+layout_mode = 0
+offset_right = 89.5
+offset_bottom = 80.0
+texture = ExtResource("22_ygc1f")
+expand_mode = 1
+
+[node name="ammo_counter_holder" type="Label" parent="UI/weaponhud/HBoxContainer/slot1"]
+layout_mode = 0
+offset_left = 1.5
+offset_top = 1.0
+offset_right = 39.5
+offset_bottom = 18.0
+text = "20/20"
+label_settings = SubResource("LabelSettings_44c10")
+
+[node name="VSeparator" type="VSeparator" parent="UI/weaponhud/HBoxContainer/slot1"]
+layout_mode = 0
+offset_left = 94.5
+offset_top = 2.0
+offset_right = 107.5
+offset_bottom = 84.0
+theme_override_styles/separator = SubResource("StyleBoxLine_sp8cr")
+
+[node name="slot2" type="Control" parent="UI/weaponhud/HBoxContainer"]
+custom_minimum_size = Vector2(100, 85)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/weaponhud/HBoxContainer/slot2"]
+layout_mode = 0
+offset_right = 89.5
+offset_bottom = 80.0
+texture = ExtResource("22_ygc1f")
+expand_mode = 1
+
+[node name="ammo_counter_holder" type="Label" parent="UI/weaponhud/HBoxContainer/slot2"]
+layout_mode = 0
+offset_left = 1.5
+offset_top = 1.0
+offset_right = 39.5
+offset_bottom = 18.0
+text = "20/20"
+label_settings = SubResource("LabelSettings_44c10")
+
+[node name="VSeparator" type="VSeparator" parent="UI/weaponhud/HBoxContainer/slot2"]
+layout_mode = 0
+offset_left = 94.5
+offset_top = 2.0
+offset_right = 107.5
+offset_bottom = 84.0
+theme_override_styles/separator = SubResource("StyleBoxLine_sp8cr")
+
+[node name="slot3" type="Control" parent="UI/weaponhud/HBoxContainer"]
+custom_minimum_size = Vector2(100, 85)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/weaponhud/HBoxContainer/slot3"]
+layout_mode = 0
+offset_right = 89.5
+offset_bottom = 80.0
+texture = ExtResource("22_ygc1f")
+expand_mode = 1
+
+[node name="ammo_counter_holder" type="Label" parent="UI/weaponhud/HBoxContainer/slot3"]
+layout_mode = 0
+offset_left = 1.5
+offset_top = 1.0
+offset_right = 39.5
+offset_bottom = 18.0
+text = "20/20"
+label_settings = SubResource("LabelSettings_44c10")
 
 [node name="TimersHolderComponent" type="Node3D" parent="."]
 
@@ -858,6 +950,5 @@ parameters/lean_blend/blend_amount = 0.0
 parameters/lean_left_collison/blend_amount = 0.0
 parameters/lesn_r_col/blend_amount = 0.0
 
-[connection signal="UpdateWeaponHud" from="." to="UI/WeaponHud" method="_on_player_update_weapon_hud"]
 [connection signal="recieved_damage" from="." to="head/CameraControllerComponent/CameraJuice" method="damage_anim"]
 [connection signal="state_changed" from="PlayerStateMachine" to="Debug_ui" method="_on_player_state_machine_state_changed"]

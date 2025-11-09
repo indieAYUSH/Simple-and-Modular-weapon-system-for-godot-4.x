@@ -8,7 +8,7 @@ class_name WeaponResource
 
 @export_category("Scenes")
 @export var weapon_scene : PackedScene
-
+@export var gun_ui_texture : Texture2D
 
 @export_group("weaponsetting")
 @export_flags("MELEE" , "GUN") var type
