@@ -1,0 +1,2 @@
+extends PickupableItem
+class_name PickupAbleWeapon

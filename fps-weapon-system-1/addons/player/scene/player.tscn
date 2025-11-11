@@ -17,7 +17,7 @@
 [ext_resource type="Script" uid="uid://clyumisqx0i7s" path="res://addons/player/states/dash_state.gd" id="14_w2vqi"]
 [ext_resource type="Texture2D" uid="uid://dcb0sh25uoy4i" path="res://addons/Assests/keyboard_e.svg" id="16_v58eg"]
 [ext_resource type="Script" uid="uid://c0axoo45iv26" path="res://addons/Demo/debug_ui.gd" id="17_1vt7l"]
-[ext_resource type="FontFile" uid="uid://3op67rxtj0f6" path="res://addons/Assests/Fonts/roboto/Roboto-Black.ttf" id="17_xkm3v"]
+[ext_resource type="FontFile" uid="uid://3op67rxtj0f6" path="res://addons/weapons/Bullets/Roboto-Black.ttf" id="17_xkm3v"]
 [ext_resource type="Script" uid="uid://41krvxlxp32v" path="res://addons/player/UI/ui.gd" id="18_ygc1f"]
 [ext_resource type="Texture2D" uid="uid://ceyssin1qct24" path="res://addons/Assests/crosshair008.png" id="22_sto40"]
 [ext_resource type="Texture2D" uid="uid://rmxkmcsh4jf5" path="res://addons/Assests/akm_ui_mat.png" id="22_ygc1f"]

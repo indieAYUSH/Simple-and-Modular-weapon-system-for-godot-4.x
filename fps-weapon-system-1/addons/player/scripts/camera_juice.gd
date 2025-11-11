@@ -25,6 +25,7 @@ class_name CameraJuiceComponent extends Node3D
 @export var bob_roll : float = 0.025
 @export var bob_up :float = 0.0005
 @export var bob_frequncy : float = 7.0
+@export var offset_x_frequency : float
 
 @export_category("camera_shake_vars")
 @export var noise_texture : NoiseTexture2D
@@ -87,6 +88,8 @@ func camera_effects_manager(delta:float) -> void:
 		
 		var up_delta = bob_sin * speed * bob_up
 		offsets.y += up_delta
+		#var side_delta = bob_sin * speed * offset_x_frequency * 0.5
+		#offsets.x += side_delta 
 		
 
 	if camera_shake:

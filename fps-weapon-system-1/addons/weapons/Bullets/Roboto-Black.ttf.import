@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://3op67rxtj0f6"
-path="res://.godot/imported/Roboto-Black.ttf-040ee53b8b42d8cf6818939019ae3e75.fontdata"
+path="res://.godot/imported/Roboto-Black.ttf-f229dbec6c3fd2fc25f7817438f82d58.fontdata"
 
 [deps]
 
-source_file="res://addons/Assests/Fonts/roboto/Roboto-Black.ttf"
-dest_files=["res://.godot/imported/Roboto-Black.ttf-040ee53b8b42d8cf6818939019ae3e75.fontdata"]
+source_file="res://addons/weapons/Bullets/Roboto-Black.ttf"
+dest_files=["res://.godot/imported/Roboto-Black.ttf-f229dbec6c3fd2fc25f7817438f82d58.fontdata"]
 
 [params]
 

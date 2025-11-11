@@ -1,0 +1,2 @@
+extends PickupAbleWeapon
+class_name PickupableMelee

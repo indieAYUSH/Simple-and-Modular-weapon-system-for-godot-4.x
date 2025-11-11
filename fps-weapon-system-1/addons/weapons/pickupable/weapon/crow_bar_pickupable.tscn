@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4wke4kw1tass"]
+
+[ext_resource type="Script" uid="uid://nuvatplycon4" path="res://addons/weapons/pickupable/pickupable_melee.gd" id="1_b5bf2"]
+[ext_resource type="PackedScene" uid="uid://btc1oqkov8egc" path="res://addons/Assests/simple_crowbar.glb" id="2_ddjf8"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_av4ww"]
+height = 1.5727539
+radius = 0.12695313
+
+[node name="CrowBarPickupable" type="RigidBody3D"]
+script = ExtResource("1_b5bf2")
+metadata/_custom_type_script = "uid://nuvatplycon4"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.8929163, -0.05865228, -0.44638583, 0.22659004, 0.9153005, 0.33298886, 0.38904673, -0.39847773, 0.8305769, 0.059024442, 0.09859474, 0.40411988)
+shape = SubResource("CylinderShape3D_av4ww")
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("2_ddjf8")]

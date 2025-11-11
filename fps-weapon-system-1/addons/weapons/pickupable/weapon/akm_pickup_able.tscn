@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://ck7beqf6sj8ss"]
+
+[ext_resource type="Script" uid="uid://ca5iwro2hnwb6" path="res://addons/weapons/pickupable/pickupable_gun.gd" id="1_pwujl"]
+[ext_resource type="PackedScene" uid="uid://do0xg4qkkh8pg" path="res://addons/Assests/Guns3Dmodels/low-poly_akm.glb" id="2_ojmgh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lt156"]
+size = Vector3(2.1498108, 0.41174316, 0.36401367)
+
+[node name="AKMPickupAble" type="RigidBody3D"]
+script = ExtResource("1_pwujl")
+ammo = 30
+Name = "AKM"
+metadata/_custom_type_script = "uid://ca5iwro2hnwb6"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.021743774, 0.006164551, -0.09362793)
+shape = SubResource("BoxShape3D_lt156")
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("2_ojmgh")]
+transform = Transform3D(0.43, 0, 0, 0, 0.43, 0, 0, 0, 0.43, 0, 0, 0)
