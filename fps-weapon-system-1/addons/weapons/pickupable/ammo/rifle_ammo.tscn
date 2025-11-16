@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://cr07t6w2ptgh8"]
+
+[ext_resource type="Texture2D" uid="uid://bgncx22fbn4x8" path="res://addons/Demo/gridbox-prototype-materials-main/gridbox-prototype-materials-main/prototype_512x512_grey3.png" id="1_rlbtf"]
+[ext_resource type="Script" uid="uid://bgkp3sfxyk3sw" path="res://addons/weapons/Scripts/core logics/pickupable_ammo.gd" id="2_nkvad"]
+[ext_resource type="Script" uid="uid://pdgu0t75jx23" path="res://addons/InterractionSystem/scripts/InteractionComponent.gd" id="3_nkvad"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_138yj"]
+size = Vector3(0.7, 0.7, 0.7)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ituar"]
+size = Vector3(0.85, 0.85, 0.85)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4b2gf"]
+albedo_color = Color(1, 1, 1, 0.62352943)
+albedo_texture = ExtResource("1_rlbtf")
+uv1_scale = Vector3(1.94, 1.94, 1.94)
+uv1_offset = Vector3(0.56, 0.175, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_vi4e0"]
+material = SubResource("StandardMaterial3D_4b2gf")
+size = Vector3(0.7, 0.7, 0.7)
+
+[node name="rifle_ammo" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_138yj")
+
+[node name="PickupAbleAmmo" type="Area3D" parent="."]
+script = ExtResource("2_nkvad")
+ammo_type = "riffle"
+ammo_amount = 30
+metadata/_custom_type_script = "uid://bgkp3sfxyk3sw"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PickupAbleAmmo"]
+shape = SubResource("BoxShape3D_ituar")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_vi4e0")
+
+[node name="InteractionComponent" type="Node" parent="."]
+script = ExtResource("3_nkvad")
+input_prompt = "Riffle Ammo(30)"
+metadata/_custom_type_script = "uid://pdgu0t75jx23"

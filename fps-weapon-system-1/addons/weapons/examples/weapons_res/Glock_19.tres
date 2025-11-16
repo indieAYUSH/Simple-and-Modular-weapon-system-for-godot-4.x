@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="WeaponResource" load_steps=3 format=3 uid="uid://pvx5bhr7xp4n"]
 
-[ext_resource type="Script" uid="uid://bttf06c46xd3g" path="res://addons/weapons/Scripts/weapon_resource.gd" id="1_xpx6x"]
-[ext_resource type="PackedScene" uid="uid://us7aval3fc7n" path="res://addons/weapons/weapon_scenes/glock_19.tscn" id="3_8kjfw"]
+[ext_resource type="Script" uid="uid://bttf06c46xd3g" path="res://addons/weapons/Scripts/core logics/weapon_resource.gd" id="1_xpx6x"]
+[ext_resource type="PackedScene" uid="uid://us7aval3fc7n" path="res://addons/weapons/examples/weapon_scenes/glock_19.tscn" id="3_8kjfw"]
 
 [resource]
 script = ExtResource("1_xpx6x")

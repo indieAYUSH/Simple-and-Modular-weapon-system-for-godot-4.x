@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="WeaponResource" load_steps=5 format=3 uid="uid://ch3yic65cww3j"]
 
-[ext_resource type="Script" uid="uid://bttf06c46xd3g" path="res://addons/weapons/Scripts/weapon_resource.gd" id="1_487ja"]
+[ext_resource type="Script" uid="uid://bttf06c46xd3g" path="res://addons/weapons/Scripts/core logics/weapon_resource.gd" id="1_487ja"]
 [ext_resource type="PackedScene" uid="uid://dqbx06n3u2x55" path="res://addons/weapons/projectiles/shotgunpaellete.tscn" id="1_jmi6q"]
 [ext_resource type="PackedScene" uid="uid://dyj1qpfv6i6x1" path="res://addons/weapons/Vfx/muzzle_flash.tscn" id="2_jqqcp"]
-[ext_resource type="PackedScene" uid="uid://4mv1awq1ny4a" path="res://addons/weapons/weapon_scenes/shot_gun_lite.tscn" id="4_bpiby"]
+[ext_resource type="PackedScene" uid="uid://4mv1awq1ny4a" path="res://addons/weapons/examples/weapon_scenes/shot_gun_lite.tscn" id="4_bpiby"]
 
 [resource]
 script = ExtResource("1_487ja")

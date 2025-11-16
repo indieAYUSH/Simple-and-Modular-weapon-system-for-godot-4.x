@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://dyj1qpfv6i6x1" path="res://addons/weapons/Vfx/muzzle_flash.tscn" id="1_ghjqc"]
 [ext_resource type="PackedScene" uid="uid://bfh60q7yoj82w" path="res://addons/weapons/projectiles/riffile_bullets.tscn" id="1_qtb0x"]
-[ext_resource type="Script" uid="uid://bttf06c46xd3g" path="res://addons/weapons/Scripts/weapon_resource.gd" id="2_qtb0x"]
-[ext_resource type="PackedScene" uid="uid://cchakdkujbgmk" path="res://addons/weapons/weapon_scenes/Glock18.tscn" id="3_qhr6e"]
+[ext_resource type="Script" uid="uid://bttf06c46xd3g" path="res://addons/weapons/Scripts/core logics/weapon_resource.gd" id="2_qtb0x"]
+[ext_resource type="PackedScene" uid="uid://cchakdkujbgmk" path="res://addons/weapons/examples/weapon_scenes/Glock18.tscn" id="3_qhr6e"]
 
 [resource]
 script = ExtResource("2_qtb0x")

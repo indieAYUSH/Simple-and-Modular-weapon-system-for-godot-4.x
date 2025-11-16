@@ -94,7 +94,6 @@ func shoot_projectile(collision_point):
 	var projectile  = rigid_projectile_scene.instantiate()
 	projectile.damage_amount = damage
 	projectile.impact_force = impact_force
-	
 	get_tree().current_scene.add_child(projectile)
 	projectile.linear_velocity = projectile_velocity*dir
 	projectile.linear_velocity.y += upward_velocity

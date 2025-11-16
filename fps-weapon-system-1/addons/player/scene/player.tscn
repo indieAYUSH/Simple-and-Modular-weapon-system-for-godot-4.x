@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://5ym40qt2aau8"]
+[gd_scene load_steps=56 format=3 uid="uid://5ym40qt2aau8"]
 
 [ext_resource type="Script" uid="uid://bcqieithuf66l" path="res://addons/player/scripts/player.gd" id="1_qvlqn"]
 [ext_resource type="Script" uid="uid://boivvjeleq8ja" path="res://addons/player/scripts/Components/camera_controller_component.gd" id="2_8p4p3"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" uid="uid://c0axoo45iv26" path="res://addons/Demo/debug_ui.gd" id="17_1vt7l"]
 [ext_resource type="FontFile" uid="uid://3op67rxtj0f6" path="res://addons/weapons/Bullets/Roboto-Black.ttf" id="17_xkm3v"]
 [ext_resource type="Script" uid="uid://41krvxlxp32v" path="res://addons/player/UI/ui.gd" id="18_ygc1f"]
+[ext_resource type="Script" uid="uid://bl2ivftgwyuxf" path="res://addons/player/UI/context_component.gd" id="20_t4wwt"]
 [ext_resource type="Texture2D" uid="uid://ceyssin1qct24" path="res://addons/Assests/crosshair008.png" id="22_sto40"]
 [ext_resource type="Texture2D" uid="uid://rmxkmcsh4jf5" path="res://addons/Assests/akm_ui_mat.png" id="22_ygc1f"]
 [ext_resource type="Script" uid="uid://nr0k8pums4yn" path="res://addons/player/states/crouch_state.gd" id="24_d7dwe"]
@@ -629,8 +630,10 @@ PlayerContr = NodePath("../../../../../..")
 [node name="Camera3D" type="Camera3D" parent="head/CameraControllerComponent/CameraJuice/lean_pivot/screen_shake"]
 unique_name_in_owner = true
 
-[node name="Interraction_Ray_cast" type="RayCast3D" parent="head/CameraControllerComponent/CameraJuice/lean_pivot/screen_shake/Camera3D"]
+[node name="Interraction_Ray_cast" type="RayCast3D" parent="head/CameraControllerComponent/CameraJuice/lean_pivot/screen_shake/Camera3D" node_paths=PackedStringArray("interaction_raycast")]
 target_position = Vector3(0, 0, -3)
+script = ExtResource("5_vd5ca")
+interaction_raycast = NodePath(".")
 
 [node name="obstacle_checker" type="Node3D" parent="head/CameraControllerComponent"]
 
@@ -804,8 +807,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("22_sto40")
 
-[node name="ContextComponent" type="CenterContainer" parent="UI"]
-visible = false
+[node name="ContextComponent" type="CenterContainer" parent="UI" node_paths=PackedStringArray("input_promt_icon", "input_prompt")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.013020833
@@ -814,16 +816,20 @@ anchor_right = 0.9895833
 anchor_bottom = 1.0324074
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("20_t4wwt")
+input_promt_icon = NodePath("HBoxContainer/InputTex")
+input_prompt = NodePath("HBoxContainer/InputPrompt")
+default_icon = ExtResource("16_v58eg")
 metadata/_edit_use_anchors_ = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/ContextComponent"]
 layout_mode = 2
 
 [node name="InputTex" type="TextureRect" parent="UI/ContextComponent/HBoxContainer"]
+z_index = 1
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
-texture = ExtResource("16_v58eg")
 expand_mode = 1
 
 [node name="InputPrompt" type="Label" parent="UI/ContextComponent/HBoxContainer"]

@@ -1,12 +1,12 @@
 [gd_scene load_steps=47 format=4 uid="uid://57s6rr1fakqm"]
 
-[ext_resource type="Material" uid="uid://chqs5o7isi467" path="res://addons/weapons/weapon_scenes/AKM_METAL.tres" id="1_462wh"]
-[ext_resource type="Script" uid="uid://b8j6df87xii68" path="res://addons/weapons/Scripts/GunManager.gd" id="1_ftxtp"]
+[ext_resource type="Material" uid="uid://chqs5o7isi467" path="res://addons/weapons/examples/weapon_scenes/AKM_METAL.tres" id="1_462wh"]
+[ext_resource type="Script" uid="uid://b8j6df87xii68" path="res://addons/weapons/Scripts/core logics/GunManager.gd" id="1_ftxtp"]
 [ext_resource type="PackedScene" uid="uid://bfh60q7yoj82w" path="res://addons/weapons/projectiles/riffile_bullets.tscn" id="2_1pyu7"]
 [ext_resource type="AudioStream" uid="uid://c50qvwugbnnnq" path="res://addons/Assests/gunsfx/akme Sound Effects (mp3cut.net).wav" id="2_ncfq7"]
 [ext_resource type="PackedScene" uid="uid://dyj1qpfv6i6x1" path="res://addons/weapons/Vfx/muzzle_flash.tscn" id="3_4ct5k"]
 [ext_resource type="AudioStream" uid="uid://dp71anrdr0e35" path="res://addons/Assests/gunsfx/akmreload.mp3" id="3_kqlhi"]
-[ext_resource type="Script" uid="uid://bpwu3mgofmf6r" path="res://addons/weapons/Scripts/shooting_vfx_manager.gd" id="7_4ubi1"]
+[ext_resource type="Script" uid="uid://bpwu3mgofmf6r" path="res://addons/weapons/Scripts/core logics/shooting_vfx_manager.gd" id="7_4ubi1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uhgcn"]
 resource_name = "Material.012"
@@ -729,9 +729,6 @@ tracks/2/keys = {
 "values": [Vector3(0, 0, 0), Vector3(16.816383, 11.774958, 0.52870286), Vector3(0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_ncfq7"]
-resource_name = "shoot"
-
 [sub_resource type="Animation" id="Animation_ftxtp"]
 resource_name = "pull_away"
 length = 0.4
@@ -811,6 +808,9 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector3(0, -1.535, 0), Vector3(0, 0, 0)]
 }
+
+[sub_resource type="Animation" id="Animation_ncfq7"]
+resource_name = "shoot"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kqlhi"]
 _data = {
@@ -934,7 +934,7 @@ libraries = {
 }
 
 [node name="barrel_pos" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06805321, 0.211, -1.427)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.059605204, 0.211, -1.427)
 
 [node name="SHOOTsfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_ncfq7")

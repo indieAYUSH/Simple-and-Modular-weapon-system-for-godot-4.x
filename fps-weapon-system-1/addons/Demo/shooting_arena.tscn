@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://begn101ys180w"]
+[gd_scene load_steps=21 format=4 uid="uid://begn101ys180w"]
 
 [ext_resource type="Texture2D" uid="uid://0g212h4mjsl6" path="res://addons/enviroment/overcast_soil_puresky_2k.exr" id="1_6tako"]
 [ext_resource type="Material" uid="uid://ca1jeuxfo8tes" path="res://addons/Demo/materials/base_mat.tres" id="1_o5r1u"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://i741v1w4vnlx" path="res://addons/Demo/gridbox-prototype-materials-main/gridbox-prototype-materials-main/prototype_512x512_red.png" id="5_qsuvo"]
 [ext_resource type="Texture2D" uid="uid://cyo6ckmb81cbd" path="res://addons/Demo/gridbox-prototype-materials-main/gridbox-prototype-materials-main/prototype_512x512_yellow.png" id="6_2k0vt"]
 [ext_resource type="Texture2D" uid="uid://cmr4n2uaw2svo" path="res://addons/Demo/gridbox-prototype-materials-main/gridbox-prototype-materials-main/prototype_512x512_green1.png" id="7_ku3qh"]
+[ext_resource type="PackedScene" uid="uid://cr07t6w2ptgh8" path="res://addons/weapons/pickupable/ammo/rifle_ammo.tscn" id="10_8mchr"]
 [ext_resource type="PackedScene" uid="uid://dthkwu5kx7q6r" path="res://addons/Demo/scenes/shooting_range_target.tscn" id="11_qsuvo"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_wvgco"]
@@ -223,3 +224,6 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5.4
 
 [node name="shooting_range_target19" parent="Node3D" instance=ExtResource("11_qsuvo")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5.3164597, 0, 0)
+
+[node name="rifle_ammo2" parent="." instance=ExtResource("10_8mchr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.535198, 0.85000014, -28.16972)

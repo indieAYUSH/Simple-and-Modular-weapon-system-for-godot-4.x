@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://848a10ihwlra" path="res://addons/Assests/Guns3Dmodels/minigun__machine_gun__gatling_gun_18.jpg" id="17_k6u1x"]
 [ext_resource type="Texture2D" uid="uid://byr0qne3lsyfe" path="res://addons/Assests/Guns3Dmodels/minigun__machine_gun__gatling_gun_19.png" id="18_cdwd8"]
 [ext_resource type="Texture2D" uid="uid://bfni1d6ooksik" path="res://addons/Assests/Guns3Dmodels/minigun__machine_gun__gatling_gun_20.png" id="19_nh6jl"]
-[ext_resource type="ArrayOccluder3D" uid="uid://cl443x0fs1t5d" path="res://addons/weapons/weapon_scenes/mini_gun.occ" id="20_xctq3"]
+[ext_resource type="ArrayOccluder3D" uid="uid://cl443x0fs1t5d" path="res://addons/weapons/examples/weapon_scenes/mini_gun.occ" id="20_xctq3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i0pwa"]
 resource_name = "01_-_Default"

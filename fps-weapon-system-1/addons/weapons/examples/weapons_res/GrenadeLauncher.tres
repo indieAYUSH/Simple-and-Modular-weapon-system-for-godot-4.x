@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="WeaponResource" load_steps=5 format=3 uid="uid://bd6qapmmw11gb"]
 
-[ext_resource type="PackedScene" uid="uid://dyj1qpfv6i6x1" path="res://weapons/Vfx/muzzle_flash.tscn" id="2_k0nlq"]
-[ext_resource type="Script" uid="uid://bttf06c46xd3g" path="res://weapons/Scripts/weapon_resource.gd" id="2_ndwdr"]
-[ext_resource type="PackedScene" uid="uid://d4m0buuqtgxyy" path="res://weapons/weapon_scenes/grenade_launcher.tscn" id="3_k0nlq"]
-[ext_resource type="PackedScene" uid="uid://b3nlbi5n1hde" path="res://weapons/projectiles/grenade_launcher_projctile.tscn" id="4_4k04l"]
+[ext_resource type="PackedScene" uid="uid://dyj1qpfv6i6x1" path="res://addons/weapons/Vfx/muzzle_flash.tscn" id="2_k0nlq"]
+[ext_resource type="Script" uid="uid://bttf06c46xd3g" path="res://addons/weapons/Scripts/core logics/weapon_resource.gd" id="2_ndwdr"]
+[ext_resource type="PackedScene" uid="uid://d4m0buuqtgxyy" path="res://addons/weapons/examples/weapon_scenes/grenade_launcher.tscn" id="3_k0nlq"]
+[ext_resource type="PackedScene" uid="uid://b3nlbi5n1hde" path="res://addons/weapons/projectiles/grenade_launcher_projctile.tscn" id="4_4k04l"]
 
 [resource]
 script = ExtResource("2_ndwdr")

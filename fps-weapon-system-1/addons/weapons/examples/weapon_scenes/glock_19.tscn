@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=4 uid="uid://us7aval3fc7n"]
 
 [ext_resource type="AnimationLibrary" uid="uid://cy4p4umher43i" path="res://addons/weapons/anims/SHOOT.res" id="1_jsgom"]
-[ext_resource type="Material" uid="uid://domvfglebboqm" path="res://addons/weapons/weapon_scenes/gloack19_metal_materia;.tres" id="1_xahd4"]
+[ext_resource type="Material" uid="uid://domvfglebboqm" path="res://addons/weapons/examples/weapon_scenes/gloack19_metal_materia;.tres" id="1_xahd4"]
 [ext_resource type="AudioStream" uid="uid://cd6axv1rfig4r" path="res://addons/Assests/gunsfx/glock_19_ (mp3cut.net).wav" id="3_7or8c"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jsgom"]

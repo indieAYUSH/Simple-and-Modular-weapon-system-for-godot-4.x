@@ -1,47 +1,7 @@
 [gd_scene load_steps=11 format=4 uid="uid://msc6f4nxhtqp"]
 
-[ext_resource type="Script" uid="uid://dxhi2noov7vtc" path="res://addons/weapons/Scripts/MelleWeapon.gd" id="1_tlyu3"]
-[ext_resource type="Texture2D" uid="uid://blrkshr6v0g74" path="res://addons/Assests/simple_crowbar_0.png" id="2_i2l8f"]
-
-[sub_resource type="Animation" id="Animation_0cnqt"]
-resource_name = "pull_out"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.03333333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("cr_holder/weapon_model2:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, -0.29, 0), Vector3(0, 0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("cr_holder/weapon_model2:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0.87266463, -2.9862583, -1.1082841), Vector3(0, -2.9862583, 0)]
-}
+[ext_resource type="Script" uid="uid://dxhi2noov7vtc" path="res://addons/weapons/Scripts/core logics/MelleWeapon.gd" id="1_0knvl"]
+[ext_resource type="Texture2D" uid="uid://blrkshr6v0g74" path="res://addons/Assests/simple_crowbar_0.png" id="2_ccooj"]
 
 [sub_resource type="Animation" id="Animation_iiyjl"]
 length = 0.001
@@ -106,6 +66,34 @@ tracks/4/keys = {
 "values": [Vector3(0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_pef34"]
+resource_name = "attack"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("cr_holder:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.11, -0.31, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("cr_holder:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-1.0908308, 1.1606439, -0.58119464), Vector3(0, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_crs7f"]
 resource_name = "pull_away"
 length = 0.3
@@ -146,32 +134,44 @@ tracks/2/keys = {
 "values": [Vector3(0, -2.9862583, 0), Vector3(0.87266463, -2.9862583, -1.1082841)]
 }
 
-[sub_resource type="Animation" id="Animation_pef34"]
-resource_name = "attack"
-length = 0.6
+[sub_resource type="Animation" id="Animation_0cnqt"]
+resource_name = "pull_out"
+length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("cr_holder:position")
+tracks/0/path = NodePath(".:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.16666667, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-0.11, -0.31, 0), Vector3(0, 0, 0)]
+"times": PackedFloat32Array(0, 0.03333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("cr_holder:rotation")
+tracks/1/path = NodePath("cr_holder/weapon_model2:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.16666667, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-1.0908308, 1.1606439, -0.58119464), Vector3(0, 0, 0)]
+"values": [Vector3(0, -0.29, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("cr_holder/weapon_model2:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.87266463, -2.9862583, -1.1082841), Vector3(0, -2.9862583, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mkmwn"]
@@ -185,7 +185,7 @@ _data = {
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ckt0"]
 resource_name = "m_bc7bd3ae-3434-3be1-4dab-f4da583f07af"
 cull_mode = 2
-albedo_texture = ExtResource("2_i2l8f")
+albedo_texture = ExtResource("2_ccooj")
 use_z_clip_scale = true
 z_clip_scale = 0.5
 use_fov_override = true
@@ -225,7 +225,7 @@ shadow_mesh = SubResource("ArrayMesh_w85im")
 
 [node name="CrowBar" type="Node3D" node_paths=PackedStringArray("WeaponAnimationPlayer")]
 visible = false
-script = ExtResource("1_tlyu3")
+script = ExtResource("1_0knvl")
 pull_out_anim = "pull_out"
 pull_away_anim = "pull_away"
 attack_anim = "attack"

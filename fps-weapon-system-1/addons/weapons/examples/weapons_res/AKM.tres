@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="WeaponResource" load_steps=3 format=3 uid="uid://cqcbahdy32ufv"]
 
-[ext_resource type="Script" uid="uid://bttf06c46xd3g" path="res://addons/weapons/Scripts/weapon_resource.gd" id="1_gjcvw"]
-[ext_resource type="PackedScene" uid="uid://57s6rr1fakqm" path="res://addons/weapons/weapon_scenes/AKM.tscn" id="2_iqqap"]
+[ext_resource type="Script" uid="uid://bttf06c46xd3g" path="res://addons/weapons/Scripts/core logics/weapon_resource.gd" id="1_gjcvw"]
+[ext_resource type="PackedScene" uid="uid://57s6rr1fakqm" path="res://addons/weapons/examples/weapon_scenes/AKM.tscn" id="2_iqqap"]
 
 [resource]
 script = ExtResource("1_gjcvw")
